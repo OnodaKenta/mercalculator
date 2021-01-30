@@ -2,11 +2,11 @@ require "sinatra"
 require "sinatra/reloader"
 
 get "/" do
-  @title = "インデックス"
+  @title = "送料計算機"
   erb :index
 end
 
-get "/test" do
-  @title = "テスト"
-  erb :test
+post "/result" do
+  @title = "検索結果"
+  erb :result
 end
