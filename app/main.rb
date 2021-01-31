@@ -8,5 +8,6 @@ end
 
 post "/result" do
   @title = "検索結果"
+  @size = params
   erb :result
 end
