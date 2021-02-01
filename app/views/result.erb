@@ -1,2 +1,3 @@
 <h1>検索結果</h1>
-<p>あなたの荷物の大きさは<%= @size %>です</p>
+<p>あなたの荷物の大きさは</p>
+<p>長辺:<%= @size[:longside] %>cm 短辺:<%= @size[:shortside] %>cm 厚さ:<%= @size[:thickness] %>cm 重量:<%= @size[:weight] %>g</p>
