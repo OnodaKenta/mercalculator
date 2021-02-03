@@ -1,4 +1,10 @@
 <h1>検索結果</h1>
 <p>あなたの荷物の大きさは</p>
 <p>長辺:<%= @size[:longside] %>cm 短辺:<%= @size[:shortside] %>cm 厚さ:<%= @size[:thickness] %>cm 重量:<%= @size[:weight] %>g</p>
-<p>発送方法<%= @shippingmethods[0].name %>送料<%= @shippingmethods[0].price %>円</p>
+
+<p>発送方法一覧</p>
+<% @shippingmethods.each do |shipmethod| %>
+  <p><%= shipmethod.name %> 送料<%= shipmethod.price %>円</p>
+<% end %>
+
+<a href="/">戻る</a>
