@@ -7,12 +7,12 @@ get "/" do
 end
 
 class ShippingMethod
-  attr_reader :name
-  attr_reader :price
-  attr_reader :lside
-  attr_reader :sside
-  attr_reader :thickness
-  attr_reader :weight
+  attr_accessor :name
+  attr_accessor :price
+  attr_accessor :lside
+  attr_accessor :sside
+  attr_accessor :thickness
+  attr_accessor :weight
   def initialize(name:, price:, lside:, sside:, thickness:, weight:)
     self.name = name
     self.price = price
