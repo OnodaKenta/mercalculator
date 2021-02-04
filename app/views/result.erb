@@ -3,7 +3,7 @@
 <p>長辺:<%= @size[:longside] %>cm 短辺:<%= @size[:shortside] %>cm 厚さ:<%= @size[:thickness] %>cm 重量:<%= @size[:weight] %>g</p>
 
 <p>発送方法一覧</p>
-<% if @shippingmethods[0].price == "-" %>
+<% if @shippingmethods[0].price == 0 %>
   <p>対応する発送方法がありません</p>
 <% else %>
   <% @shippingmethods.each do |shipmethod| %>
