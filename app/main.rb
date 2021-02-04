@@ -33,6 +33,8 @@ post "/result" do
 
   takkyubinCompact = ShippingMethod.new(name: "宅急便コンパクト", price: 450, lside: 25, sside: 20, thickness: 5, weight: 99999)
 
+  testmethod = ShippingMethod.new(name: "テスト方法", price: 450, lside: 99, sside: 99, thickness: 99, weight: 99999)
+
   shippingmethods = []
 
   $instances.each do |ins|
@@ -46,8 +48,25 @@ post "/result" do
     shippingmethods.push(nothing)
   end
 
+  prices = []
+
+  shippingmethods.each do |ship|
+    prices.push(ship.price)
+  end
+
+  cheap = prices.min
+
+  cheapest = []
+
+  shippingmethods.each do |ship|
+    if ship.price == cheap
+      cheapest.push(ship)
+    end
+  end
+
   @title = "検索結果"
   @size = params
   @shippingmethods = shippingmethods
+  @cheapest = cheapest
   erb :result
 end
