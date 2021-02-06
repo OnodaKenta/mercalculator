@@ -8,8 +8,6 @@ end
 
 post "/result" do
 
-  $instances = []
-
   class Common
     attr_accessor :name
     attr_accessor :price
@@ -51,6 +49,8 @@ post "/result" do
       $instances.push(self)
     end
   end
+
+  $instances = []
 
   nekoPos = Lstw.new(name: "ネコポス", price: 175, type: "らくらくメルカリ便", anonymous: 1, tracking: 1, compensation: 1, note: "長辺短辺下限あり", lside: 31.2, sside: 22.8, thickness: 3, weight: 1000)
 
