@@ -10,17 +10,40 @@ post "/result" do
 
   $instances = []
 
-  class ShippingMethod
+  class Common
     attr_accessor :name
     attr_accessor :price
+    attr_accessor :type
+    attr_accessor :anonymous
+    attr_accessor :tracking
+    attr_accessor :compensation
+    attr_accessor :note
+  
+    def initialize(name:, price:, type:, anonymous:, tracking:, compensation:, note:)
+      self.name = name
+      self.price = price
+      self.type = type
+      self.anonymous = anonymous
+      self.tracking = tracking
+      self.compensation = compensation
+      self.note = note
+    end
+  end
+
+  class Lstw < Common
     attr_accessor :lside
     attr_accessor :sside
     attr_accessor :thickness
     attr_accessor :weight
 
-    def initialize(name:, price:, lside:, sside:, thickness:, weight:)
+    def initialize(name:, price:, type:, anonymous:, tracking:, compensation:, note:, lside:, sside:, thickness:, weight:)
       self.name = name
       self.price = price
+      self.type = type
+      self.anonymous = anonymous
+      self.tracking = tracking
+      self.compensation = compensation
+      self.note = note
       self.lside = lside
       self.sside = sside
       self.thickness = thickness
@@ -29,11 +52,9 @@ post "/result" do
     end
   end
 
-  yuPacketPost = ShippingMethod.new(name: "ゆうパケットポスト", price: 265, lside: 32.7, sside: 22.8, thickness: 3, weight: 2000)
+  nekoPos = Lstw.new(name: "ネコポス", price: 175, type: "らくらくメルカリ便", anonymous: 1, tracking: 1, compensation: 1, note: "長辺短辺下限あり", lside: 31.2, sside: 22.8, thickness: 3, weight: 1000)
 
-  takkyubinCompact = ShippingMethod.new(name: "宅急便コンパクト", price: 450, lside: 25, sside: 20, thickness: 5, weight: 99999)
-
-  testmethod = ShippingMethod.new(name: "テスト方法", price: 450, lside: 99, sside: 99, thickness: 99, weight: 99999)
+  yuPacketPost = Lstw.new(name: "ゆうパケットポスト", price: 265, type: "ゆうゆうメルカリ便", anonymous: 1, tracking: 1, compensation: 1, note: "専用BOX", lside: 32.7, sside: 22.8, thickness: 3, weight: 2000)
 
   shippingmethods = []
 
