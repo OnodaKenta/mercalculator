@@ -20,13 +20,13 @@ post "/result" do
     attr_accessor :note
   
     def initialize(name:, price:, type:, anonymous:, tracking:, compensation:, note:)
-      self.name = name
-      self.price = price
-      self.type = type
-      self.anonymous = anonymous
-      self.tracking = tracking
-      self.compensation = compensation
-      self.note = note
+      @name = name
+      @price = price
+      @type = type
+      @anonymous = anonymous
+      @tracking = tracking
+      @compensation = compensation
+      @note = note
     end
   end
 
@@ -37,17 +37,17 @@ post "/result" do
     attr_accessor :weight
 
     def initialize(name:, price:, type:, anonymous:, tracking:, compensation:, note:, lside:, sside:, thickness:, weight:)
-      self.name = name
-      self.price = price
-      self.type = type
-      self.anonymous = anonymous
-      self.tracking = tracking
-      self.compensation = compensation
-      self.note = note
-      self.lside = lside
-      self.sside = sside
-      self.thickness = thickness
-      self.weight = weight
+      @name = name
+      @price = price
+      @type = type
+      @anonymous = anonymous
+      @tracking = tracking
+      @compensation = compensation
+      @note = note
+      @lside = lside
+      @sside = sside
+      @thickness = thickness
+      @weight = weight
       $instances.push(self)
     end
   end
