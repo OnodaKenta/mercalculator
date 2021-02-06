@@ -65,7 +65,7 @@ post "/result" do
   end
 
   if shippingmethods == []
-    nothing = ShippingMethod.new(name: "なし", price: 0, lside: "-", sside: "-", thickness: "-", weight: "-")
+    nothing = Common.new(name: "なし", price: 0, type: "-", anonymous: 0, tracking: 0, compensation: 0, note: "-")
     shippingmethods.push(nothing)
   end
 
