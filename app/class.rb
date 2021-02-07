@@ -1,5 +1,6 @@
 class Common
   attr_accessor :name
+  attr_accessor :eng
   attr_accessor :price
   attr_accessor :type
   attr_accessor :anonymous
@@ -7,8 +8,9 @@ class Common
   attr_accessor :compensation
   attr_accessor :note
 
-  def initialize(name:, price:, type:, anonymous:, tracking:, compensation:, note:)
+  def initialize(name:, eng:, price:, type:, anonymous:, tracking:, compensation:, note:)
     @name = name
+    @eng = eng
     @price = price
     @type = type
     @anonymous = anonymous
@@ -24,8 +26,9 @@ class Lstw < Common
   attr_accessor :thickness
   attr_accessor :weight
 
-  def initialize(name:, price:, type:, anonymous:, tracking:, compensation:, note:, lside:, sside:, thickness:, weight:)
+  def initialize(name:, eng:, price:, type:, anonymous:, tracking:, compensation:, note:, lside:, sside:, thickness:, weight:)
     @name = name
+    @eng = eng
     @price = price
     @type = type
     @anonymous = anonymous
