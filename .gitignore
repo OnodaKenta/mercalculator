@@ -1,4 +1,4 @@
-.devcontainer/
-app/Dockerfile
-docker-compose.yml
-html/
+/.devcontainer/
+/app/Dockerfile
+/docker-compose.yml
+/html/
