@@ -1,4 +1,6 @@
-require "./app/class.rb"
+require "./app/class/common.rb"
+require "./app/class/lstw.rb"
+require "./app/class/takkyubin.rb"
 require "sinatra"
 require "sinatra/reloader"
 
