@@ -2,6 +2,8 @@ require "./app/class.rb"
 require "sinatra"
 require "sinatra/reloader"
 
+set :bind, "0.0.0.0"
+
 get "/" do
   @title = "送料計算機"
   erb :index
