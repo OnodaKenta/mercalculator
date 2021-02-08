@@ -19,6 +19,13 @@ post "/result" do
     end
   end
 
+  $takkyubins.each do |takkyu|
+    if params[:longside].to_i + params[:shortside].to_i + params[:thickness].to_i <= takkyu.threesides && params[:weight].to_i <= takkyu.weight
+      shippingmethods.push(takkyu)
+      break
+    end
+  end
+
   if shippingmethods == []
     nothing = Common.new(name: "なし", eng: "none", price: 0, type: "-", anonymous: 0, tracking: 0, compensation: 0, note: "-")
     shippingmethods.push(nothing)
