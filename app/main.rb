@@ -9,7 +9,7 @@ get "/" do
   erb :index
 end
 
-$instances = []
+$lstws = []
 
 nekoPos = Lstw.new(name: "ネコポス", eng: "nekopos", price: 175, type: "らくらくメルカリ便", anonymous: 1, tracking: 1, compensation: 1, note: "長辺短辺下限あり", lside: 31.2, sside: 22.8, thickness: 3, weight: 1000)
 
@@ -21,9 +21,9 @@ post "/result" do
 
   shippingmethods = []
 
-  $instances.each do |ins|
-    if params[:longside].to_i <= ins.lside && params[:shortside].to_i <= ins.sside && params[:thickness].to_i <= ins.thickness && params[:weight].to_i <= ins.weight
-      shippingmethods.push(ins)
+  $lstws.each do |lstw|
+    if params[:longside].to_i <= lstw.lside && params[:shortside].to_i <= lstw.sside && params[:thickness].to_i <= lstw.thickness && params[:weight].to_i <= lstw.weight
+      shippingmethods.push(lstw)
     end
   end
 

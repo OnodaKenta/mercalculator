@@ -39,6 +39,6 @@ class Lstw < Common
     @sside = sside
     @thickness = thickness
     @weight = weight
-    $instances.push(self)
+    $lstws.push(self)
   end
 end
