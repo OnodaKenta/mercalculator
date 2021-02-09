@@ -30,3 +30,5 @@ nekoPos = Lstw.new(name: "ネコポス", eng: "nekopos", price: 175, type: "ら�
 yuPacketPost = Lstw.new(name: "ゆうパケットポスト", eng: "yupacketpost", price: 265, type: "ゆうゆうメルカリ便", anonymous: 1, tracking: 1, compensation: 1, note: "専用BOX", lside: 32.7, sside: 22.8, thickness: 3, weight: 2000)
 
 clickPost = Lstw.new(name: "クリックポスト", eng: "clickpost", price: 198, type: "日本郵便", anonymous: 0, tracking: 1, compensation: 0, note: "長辺短辺下限あり", lside: 34, sside: 25, thickness: 3, weight: 1000)
+
+smartLetter = Lstw.new(name: "スマートレター", eng: "smartletter", price: 180, type: "日本郵便", anonymous: 0, tracking: 0, compensation: 0, note: "専用封筒A5サイズ", lside: 25, sside: 17, thickness: 2, weight: 1000)
