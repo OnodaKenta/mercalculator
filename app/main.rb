@@ -1,5 +1,11 @@
+require "./app/class/common.rb"
+require "./app/class/lstw.rb"
+require "./app/class/takkyubin.rb"
+require "./app/class/yupack.rb"
 require "sinatra"
 require "sinatra/reloader"
+
+set :bind, "0.0.0.0"
 
 get "/" do
   @title = "送料計算機"
@@ -8,46 +14,52 @@ end
 
 post "/result" do
 
-  $instances = []
+  shippingmethods = []
 
-  class ShippingMethod
-    attr_accessor :name
-    attr_accessor :price
-    attr_accessor :lside
-    attr_accessor :sside
-    attr_accessor :thickness
-    attr_accessor :weight
-
-    def initialize(name:, price:, lside:, sside:, thickness:, weight:)
-      self.name = name
-      self.price = price
-      self.lside = lside
-      self.sside = sside
-      self.thickness = thickness
-      self.weight = weight
-      $instances.push(self)
+  $lstws.each do |lstw|
+    if params[:longside].to_i <= lstw.lside && params[:shortside].to_i <= lstw.sside && params[:thickness].to_i <= lstw.thickness && params[:weight].to_i <= lstw.weight
+      shippingmethods.push(lstw)
     end
   end
 
-  yuPacketPost = ShippingMethod.new(name: "ゆうパケットポスト", price: 265, lside: 32.7, sside: 22.8, thickness: 3, weight: 2000)
+  $takkyubins.each do |takkyu|
+    if params[:longside].to_i + params[:shortside].to_i + params[:thickness].to_i <= takkyu.threesides && params[:weight].to_i <= takkyu.weight
+      shippingmethods.push(takkyu)
+      break
+    end
+  end
 
-  takkyubinCompact = ShippingMethod.new(name: "宅急便コンパクト", price: 450, lside: 25, sside: 20, thickness: 5, weight: 99999)
-
-  shippingmethods = []
-
-  $instances.each do |ins|
-    if params[:longside].to_i <= ins.lside && params[:shortside].to_i <= ins.sside && params[:thickness].to_i <= ins.thickness && params[:weight].to_i <= ins.weight
-      shippingmethods.push(ins)
+  $yupacks.each do |yupack|
+    if params[:longside].to_i + params[:shortside].to_i + params[:thickness].to_i <= yupack.threesides && params[:weight].to_i <= yupack.weight
+      shippingmethods.push(yupack)
+      break
     end
   end
 
   if shippingmethods == []
-    nothing = ShippingMethod.new(name: "なし", price: "-", lside: "-", sside: "-", thickness: "-", weight: "-")
+    nothing = Common.new(name: "なし", eng: "none", price: 0, type: "-", anonymous: 0, tracking: 0, compensation: 0, note: "-")
     shippingmethods.push(nothing)
+  end
+
+  prices = []
+
+  shippingmethods.each do |ship|
+    prices.push(ship.price)
+  end
+
+  cheap = prices.min
+
+  cheapest = []
+
+  shippingmethods.each do |ship|
+    if ship.price == cheap
+      cheapest.push(ship)
+    end
   end
 
   @title = "検索結果"
   @size = params
   @shippingmethods = shippingmethods
+  @cheapest = cheapest
   erb :result
 end
