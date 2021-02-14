@@ -2,6 +2,7 @@ require "./app/class/common.rb"
 require "./app/class/lstw.rb"
 require "./app/class/takkyubin.rb"
 require "./app/class/yupack.rb"
+require "./app/class/tanomerubin.rb"
 require "sinatra"
 require "sinatra/reloader"
 
@@ -32,6 +33,13 @@ post "/result" do
   $yupacks.each do |yupack|
     if params[:longside].to_i + params[:shortside].to_i + params[:thickness].to_i <= yupack.threesides && params[:weight].to_i <= yupack.weight
       shippingmethods.push(yupack)
+      break
+    end
+  end
+
+  $tanomerubins.each do |tanomeru|
+    if params[:longside].to_i + params[:shortside].to_i + params[:thickness].to_i <= tanomeru.threesides
+      shippingmethods.push(tanomeru)
       break
     end
   end
