@@ -1,11 +1,11 @@
+require "sinatra"
+require "sinatra/reloader"
 require "./app/class/common.rb"
 require "./app/class/lstw.rb"
 require "./app/class/takkyubin.rb"
 require "./app/class/yupack.rb"
 require "./app/class/tanomerubin.rb"
 require "./app/class/fixed.rb"
-require "sinatra"
-require "sinatra/reloader"
 
 set :bind, "0.0.0.0"
 
