@@ -34,3 +34,5 @@ clickPost = Lstw.new(name: "クリックポスト", eng: "clickpost", price: 198
 smartLetter = Lstw.new(name: "スマートレター", eng: "smartletter", price: 180, type: "日本郵便", anonymous: 0, tracking: 0, compensation: 0, note: "専用封筒A5サイズ", lside: 25, sside: 17, thickness: 2, weight: 1000)
 
 letterPackLight = Lstw.new(name: "レターパックライト", eng: "letterpacklight", price: 370, type: "日本郵便", anonymous: 0, tracking: 1, compensation: 0, note: "専用封筒A4サイズ", lside: 34, sside: 24.8, thickness: 3, weight: 4000)
+
+yuPacketPlus = Lstw.new(name: "ゆうパケットプラス", eng: "yupacketplus", price: 440, type: "ゆうゆうメルカリ便", anonymous: 1, tracking: 1, compensation: 1, note: "専用BOX", lside: 24, sside: 17, thickness: 7, weight: 2000)
