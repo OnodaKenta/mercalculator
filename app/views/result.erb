@@ -10,7 +10,7 @@
     <p><%= ch.name %> 送料<%= ch.price %>円</p>
   <% end %>
   <p>発送方法一覧</p>
-  <% @shippingmethods.each do |shipmethod| %>
+  <% @shippingsort.each do |shipmethod| %>
     <p><%= shipmethod.name %> 送料<%= shipmethod.price %>円</p>
   <% end %>
 <% end %>

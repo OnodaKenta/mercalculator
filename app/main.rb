@@ -65,9 +65,14 @@ post "/result" do
     end
   end
 
+  shippingsort = shippingmethods.sort {|a, b|
+    a.price <=> b.price
+  }
+
   @title = "検索結果"
   @size = params
   @shippingmethods = shippingmethods
   @cheapest = cheapest
+  @shippingsort = shippingsort
   erb :result
 end
