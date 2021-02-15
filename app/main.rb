@@ -3,6 +3,7 @@ require "./app/class/lstw.rb"
 require "./app/class/takkyubin.rb"
 require "./app/class/yupack.rb"
 require "./app/class/tanomerubin.rb"
+require "./app/class/fixed.rb"
 require "sinatra"
 require "sinatra/reloader"
 
@@ -40,6 +41,13 @@ post "/result" do
   $tanomerubins.each do |tanomeru|
     if params[:longside].to_i + params[:shortside].to_i + params[:thickness].to_i <= tanomeru.threesides
       shippingmethods.push(tanomeru)
+      break
+    end
+  end
+
+  $fixedforms.each do |fixedform|
+    if params[:longside].to_i <= fixedform.lside && params[:shortside].to_i <= fixedform.sside && params[:thickness].to_i <= fixedform.thickness && params[:weight].to_i <= fixedform.weight
+      shippingmethods.push(fixedform)
       break
     end
   end
