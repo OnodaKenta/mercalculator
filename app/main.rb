@@ -19,6 +19,22 @@ post "/result" do
 
   shippingmethods = []
 
+  $teikeigaistandards.each do |teikeigaistandard|
+    if params[:longside].to_i <= teikeigaistandard.lside && params[:shortside].to_i <= teikeigaistandard.sside && params[:thickness].to_i <= teikeigaistandard.thickness && params[:weight].to_i <= teikeigaistandard.weight
+      shippingmethods.push(teikeigaistandard)
+      break
+    end
+  end
+
+  if shippingmethods == []
+    $teikeigainonstandards.each do |teikeigainonstandard|
+      if params[:longside].to_i <= teikeigainonstandard.lside && params[:longside].to_i + params[:shortside].to_i + params[:thickness].to_i <= teikeigainonstandard.threesides && params[:weight].to_i <= teikeigainonstandard.weight
+        shippingmethods.push(teikeigainonstandard)
+        break
+      end
+    end  
+  end
+
   $lstws.each do |lstw|
     if params[:longside].to_i <= lstw.lside && params[:shortside].to_i <= lstw.sside && params[:thickness].to_i <= lstw.thickness && params[:weight].to_i <= lstw.weight
       shippingmethods.push(lstw)
@@ -49,13 +65,6 @@ post "/result" do
   $fixedforms.each do |fixedform|
     if params[:longside].to_i <= fixedform.lside && params[:shortside].to_i <= fixedform.sside && params[:thickness].to_i <= fixedform.thickness && params[:weight].to_i <= fixedform.weight
       shippingmethods.push(fixedform)
-      break
-    end
-  end
-
-  $teikeigaistandards.each do |teikeigaistandard|
-    if params[:longside].to_i <= teikeigaistandard.lside && params[:shortside].to_i <= teikeigaistandard.sside && params[:thickness].to_i <= teikeigaistandard.thickness && params[:weight].to_i <= teikeigaistandard.weight
-      shippingmethods.push(teikeigaistandard)
       break
     end
   end
