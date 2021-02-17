@@ -1,11 +1,6 @@
 require "./app/class/common.rb"
 
 class Teikei < Common
-  attr_accessor :lside
-  attr_accessor :sside
-  attr_accessor :thickness
-  attr_accessor :weight
-
   def initialize(eng:, price:, weight:)
     @name = "定形郵便"
     @eng = eng
@@ -26,5 +21,4 @@ end
 $teikeis = []
 
 teikei25 = Teikei.new(eng: "teikei25", price: 84, weight: 25)
-
 teikei50 = Teikei.new(eng: "teikei50", price: 94, weight: 50)

@@ -7,6 +7,11 @@ class Common
   attr_accessor :tracking
   attr_accessor :compensation
   attr_accessor :note
+  attr_accessor :lside
+  attr_accessor :sside
+  attr_accessor :thickness
+  attr_accessor :threesides
+  attr_accessor :weight
 
   def initialize(name:, eng:, price:, type:, anonymous:, tracking:, compensation:, note:)
     @name = name

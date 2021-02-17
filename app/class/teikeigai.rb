@@ -1,11 +1,6 @@
 require "./app/class/common.rb"
 
 class TeikeigaiStandard < Common
-  attr_accessor :lside
-  attr_accessor :sside
-  attr_accessor :thickness
-  attr_accessor :weight
-
   def initialize(eng:, price:, weight:)
     @name = "定形外郵便 規格内"
     @eng = eng
@@ -24,10 +19,6 @@ class TeikeigaiStandard < Common
 end
 
 class TeikeigaiNonStandard < Common
-  attr_accessor :lside
-  attr_accessor :threesides
-  attr_accessor :weight
-
   def initialize(eng:, price:, weight:)
     @name = "定形外郵便 規格外"
     @eng = eng
