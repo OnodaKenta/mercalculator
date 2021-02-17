@@ -5,7 +5,7 @@ require "./app/class/lstw.rb"
 require "./app/class/takkyubin.rb"
 require "./app/class/yupack.rb"
 require "./app/class/tanomerubin.rb"
-require "./app/class/fixed.rb"
+require "./app/class/teikei.rb"
 require "./app/class/teikeigai.rb"
 
 set :bind, "0.0.0.0"
@@ -62,9 +62,9 @@ post "/result" do
     end
   end
 
-  $fixedforms.each do |fixedform|
-    if params[:longside].to_i <= fixedform.lside && params[:shortside].to_i <= fixedform.sside && params[:thickness].to_i <= fixedform.thickness && params[:weight].to_i <= fixedform.weight
-      shippingmethods.push(fixedform)
+  $teikeis.each do |teikei|
+    if params[:longside].to_i <= teikei.lside && params[:shortside].to_i <= teikei.sside && params[:thickness].to_i <= teikei.thickness && params[:weight].to_i <= teikei.weight
+      shippingmethods.push(teikei)
       break
     end
   end

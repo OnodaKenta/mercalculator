@@ -1,6 +1,6 @@
 require "./app/class/common.rb"
 
-class Fixed < Common
+class Teikei < Common
   attr_accessor :lside
   attr_accessor :sside
   attr_accessor :thickness
@@ -19,12 +19,12 @@ class Fixed < Common
     @sside = 12
     @thickness = 1
     @weight = weight
-    $fixedforms.push(self)
+    $teikeis.push(self)
   end
 end
 
-$fixedforms = []
+$teikeis = []
 
-fixed25 = Fixed.new(eng: "fixed25", price: 84, weight: 25)
+teikei25 = Teikei.new(eng: "teikei25", price: 84, weight: 25)
 
-fixed50 = Fixed.new(eng: "fixed50", price: 94, weight: 50)
+teikei50 = Teikei.new(eng: "teikei50", price: 94, weight: 50)
