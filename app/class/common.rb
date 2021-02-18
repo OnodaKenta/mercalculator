@@ -24,3 +24,9 @@ class Common
     @note = note
   end
 end
+
+$yuPacket = Common.new(name: "ゆうパケット", eng: "yupacket", price: 200, type: "ゆうゆうメルカリ便", anonymous: 1, tracking: 1, compensation: 1, note: "-")
+$yuPacket.lside = 34
+$yuPacket.thickness = 3
+$yuPacket.threesides = 60
+$yuPacket.weight = 1000

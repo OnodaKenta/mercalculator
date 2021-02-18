@@ -69,6 +69,10 @@ post "/result" do
     end
   end
 
+  if params[:longside].to_i <= $yuPacket.lside && params[:thickness].to_i <= $yuPacket.thickness && params[:longside].to_i + params[:shortside].to_i + params[:thickness].to_i <= $yuPacket.threesides && params[:weight].to_i <= $yuPacket.weight
+    shippingmethods.push($yuPacket)
+  end
+
   if shippingmethods == []
     nothing = Common.new(name: "なし", eng: "none", price: 0, type: "-", anonymous: 0, tracking: 0, compensation: 0, note: "-")
     shippingmethods.push(nothing)
