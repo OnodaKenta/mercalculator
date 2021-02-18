@@ -81,9 +81,12 @@ post "/result" do
     shippingmethods.push($takkyubinCompactThin)
   end
 
+  if params[:longside].to_i <= $takkyubinCompact.lside && params[:shortside].to_i <= $takkyubinCompact.sside && params[:thickness].to_i <= $takkyubinCompact.thickness
+    shippingmethods.push($takkyubinCompact)
+  end
+
   if shippingmethods == []
-    nothing = Common.new(name: "なし", eng: "none", price: 0, type: "-", anonymous: 0, tracking: 0, compensation: 0, note: "-")
-    shippingmethods.push(nothing)
+    shippingmethods.push($nothing)
   end
 
   prices = []
