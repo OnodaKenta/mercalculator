@@ -77,6 +77,10 @@ post "/result" do
     shippingmethods.push($letterPackPlus)
   end
 
+  if params[:longside].to_i <= $takkyubinCompactThin.lside && params[:shortside].to_i <= $takkyubinCompactThin.sside
+    shippingmethods.push($takkyubinCompactThin)
+  end
+
   if shippingmethods == []
     nothing = Common.new(name: "なし", eng: "none", price: 0, type: "-", anonymous: 0, tracking: 0, compensation: 0, note: "-")
     shippingmethods.push(nothing)
