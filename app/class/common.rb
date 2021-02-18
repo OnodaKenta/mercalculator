@@ -30,3 +30,8 @@ $yuPacket.lside = 34
 $yuPacket.thickness = 3
 $yuPacket.threesides = 60
 $yuPacket.weight = 1000
+
+$letterPackPlus = Common.new(name: "レターパックプラス", eng: "letterpackplus", price: 520, type: "日本郵便", anonymous: 0, tracking: 1, compensation: 0, note: "専用封筒厚さ3cm以上可")
+$letterPackPlus.lside = 34
+$letterPackPlus.sside = 24.8
+$letterPackPlus.weight = 4000
