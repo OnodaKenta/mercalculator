@@ -17,10 +17,17 @@ end
 
 post "/result" do
 
+  size = [params[:vertical].to_i, params[:side].to_i, params[:thickness].to_i].sort.reverse
+  inputlong = size[0]
+  inputshort = size[1]
+  inputthickness = size[2]
+  inputthree = inputlong + inputshort + inputthickness
+  inputweight = params[:weight].to_i
+
   shippingmethods = []
 
   $teikeigaistandards.each do |teikeigaistandard|
-    if params[:longside].to_i <= teikeigaistandard.lside && params[:shortside].to_i <= teikeigaistandard.sside && params[:thickness].to_i <= teikeigaistandard.thickness && params[:weight].to_i <= teikeigaistandard.weight
+    if inputlong <= teikeigaistandard.lside && inputshort <= teikeigaistandard.sside && inputthickness <= teikeigaistandard.thickness && inputweight <= teikeigaistandard.weight
       shippingmethods.push(teikeigaistandard)
       break
     end
@@ -28,7 +35,7 @@ post "/result" do
 
   if shippingmethods == []
     $teikeigainonstandards.each do |teikeigainonstandard|
-      if params[:longside].to_i <= teikeigainonstandard.lside && params[:longside].to_i + params[:shortside].to_i + params[:thickness].to_i <= teikeigainonstandard.threesides && params[:weight].to_i <= teikeigainonstandard.weight
+      if inputlong <= teikeigainonstandard.lside && inputthree <= teikeigainonstandard.threesides && inputweight <= teikeigainonstandard.weight
         shippingmethods.push(teikeigainonstandard)
         break
       end
@@ -36,52 +43,52 @@ post "/result" do
   end
 
   $lstws.each do |lstw|
-    if params[:longside].to_i <= lstw.lside && params[:shortside].to_i <= lstw.sside && params[:thickness].to_i <= lstw.thickness && params[:weight].to_i <= lstw.weight
+    if inputlong <= lstw.lside && inputshort <= lstw.sside && inputthickness <= lstw.thickness && inputweight <= lstw.weight
       shippingmethods.push(lstw)
     end
   end
 
-  $takkyubins.each do |takkyu|
-    if params[:longside].to_i + params[:shortside].to_i + params[:thickness].to_i <= takkyu.threesides && params[:weight].to_i <= takkyu.weight
-      shippingmethods.push(takkyu)
+  $takkyubins.each do |takkyubin|
+    if inputthree <= takkyubin.threesides && inputweight <= takkyubin.weight
+      shippingmethods.push(takkyubin)
       break
     end
   end
 
   $yupacks.each do |yupack|
-    if params[:longside].to_i + params[:shortside].to_i + params[:thickness].to_i <= yupack.threesides && params[:weight].to_i <= yupack.weight
+    if inputthree <= yupack.threesides && inputweight <= yupack.weight
       shippingmethods.push(yupack)
       break
     end
   end
 
-  $tanomerubins.each do |tanomeru|
-    if params[:longside].to_i + params[:shortside].to_i + params[:thickness].to_i <= tanomeru.threesides
-      shippingmethods.push(tanomeru)
+  $tanomerubins.each do |tanomerubin|
+    if inputthree <= tanomerubin.threesides
+      shippingmethods.push(tanomerubin)
       break
     end
   end
 
   $teikeis.each do |teikei|
-    if params[:longside].to_i <= teikei.lside && params[:shortside].to_i <= teikei.sside && params[:thickness].to_i <= teikei.thickness && params[:weight].to_i <= teikei.weight
+    if inputlong <= teikei.lside && inputshort <= teikei.sside && inputthickness <= teikei.thickness && inputweight <= teikei.weight
       shippingmethods.push(teikei)
       break
     end
   end
 
-  if params[:longside].to_i <= $yuPacket.lside && params[:thickness].to_i <= $yuPacket.thickness && params[:longside].to_i + params[:shortside].to_i + params[:thickness].to_i <= $yuPacket.threesides && params[:weight].to_i <= $yuPacket.weight
+  if inputlong <= $yuPacket.lside && inputthickness <= $yuPacket.thickness && inputthree <= $yuPacket.threesides && inputweight <= $yuPacket.weight
     shippingmethods.push($yuPacket)
   end
 
-  if params[:longside].to_i <= $letterPackPlus.lside && params[:shortside].to_i <= $letterPackPlus.sside && params[:weight].to_i <= $letterPackPlus.weight
+  if inputlong <= $letterPackPlus.lside && inputshort <= $letterPackPlus.sside && inputweight <= $letterPackPlus.weight
     shippingmethods.push($letterPackPlus)
   end
 
-  if params[:longside].to_i <= $takkyubinCompactThin.lside && params[:shortside].to_i <= $takkyubinCompactThin.sside
+  if inputlong <= $takkyubinCompactThin.lside && inputshort <= $takkyubinCompactThin.sside
     shippingmethods.push($takkyubinCompactThin)
   end
 
-  if params[:longside].to_i <= $takkyubinCompact.lside && params[:shortside].to_i <= $takkyubinCompact.sside && params[:thickness].to_i <= $takkyubinCompact.thickness
+  if inputlong <= $takkyubinCompact.lside && inputshort <= $takkyubinCompact.sside && inputthickness <= $takkyubinCompact.thickness
     shippingmethods.push($takkyubinCompact)
   end
 
@@ -91,8 +98,8 @@ post "/result" do
 
   prices = []
 
-  shippingmethods.each do |ship|
-    prices.push(ship.price)
+  shippingmethods.each do |shippingmethod|
+    prices.push(shippingmethod.price)
   end
 
   cheap = prices.min
@@ -105,7 +112,7 @@ post "/result" do
     end
   end
 
-  shippingsort = shippingmethods.sort {|a, b|
+  shippingmethodsort = shippingmethods.sort {|a, b|
     a.price <=> b.price
   }
 
@@ -113,6 +120,6 @@ post "/result" do
   @size = params
   @shippingmethods = shippingmethods
   @cheapest = cheapest
-  @shippingsort = shippingsort
+  @shippingmethodsort = shippingmethodsort
   erb :result
 end
