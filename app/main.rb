@@ -126,5 +126,6 @@ end
 
 get "/terms" do
   @title = "利用規約"
+  @time = File::Stat.new("./app/views/terms.erb").mtime.getlocal("+09:00")
   erb :terms
 end
