@@ -11,7 +11,7 @@ require "./app/class/teikeigai.rb"
 set :bind, "0.0.0.0"
 
 get "/" do
-  @title = "送料計算機"
+  @title = "送料計算"
   erb :index
 end
 
