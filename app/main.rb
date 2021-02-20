@@ -129,6 +129,11 @@ get "/inquiry" do
   erb :inquiry
 end
 
+post "/confirm" do
+  @title = "お問い合わせ内容確認"
+  erb :confirm
+end
+
 get "/terms" do
   @title = "利用規約"
   @time = File::Stat.new("./app/views/terms.erb").mtime.getlocal("+09:00")
