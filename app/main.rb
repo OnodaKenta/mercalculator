@@ -123,3 +123,8 @@ post "/result" do
   @shippingmethodsort = shippingmethodsort
   erb :result
 end
+
+get "/terms" do
+  @title = "利用規約"
+  erb :terms
+end
