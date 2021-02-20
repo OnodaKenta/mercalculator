@@ -1,17 +1,19 @@
-<p>あなたの荷物の大きさは</p>
-<p>縦:<%= @size[:vertical] %>cm 横:<%= @size[:side] %>cm 厚さ:<%= @size[:thickness] %>cm 重量:<%= @size[:weight] %>g</p>
+<div class="py-5">
+  <p>あなたの荷物の大きさは</p>
+  <p>縦:<%= @size[:vertical] %>cm 横:<%= @size[:side] %>cm 厚さ:<%= @size[:thickness] %>cm 重量:<%= @size[:weight] %>g</p>
 
-<% if @shippingmethods[0].price == 0 %>
-  <p>対応する発送方法がありません</p>
-<% else %>
-  <p>最安発送方法</p>
-  <% @cheapest.each do |ch| %>
-    <p><%= ch.name %> 送料<%= ch.price %>円</p>
+  <% if @shippingmethods[0].price == 0 %>
+    <p>対応する発送方法がありません</p>
+  <% else %>
+    <p>最安発送方法</p>
+    <% @cheapest.each do |ch| %>
+      <p><%= ch.name %> 送料<%= ch.price %>円</p>
+    <% end %>
+    <p>発送方法一覧</p>
+    <% @shippingmethodsort.each do |shipping| %>
+      <p><%= shipping.name %> 送料<%= shipping.price %>円</p>
+    <% end %>
   <% end %>
-  <p>発送方法一覧</p>
-  <% @shippingmethodsort.each do |shipping| %>
-    <p><%= shipping.name %> 送料<%= shipping.price %>円</p>
-  <% end %>
-<% end %>
 
-<a href="/">戻る</a>
+  <a href="/">戻る</a>
+</div>
