@@ -131,6 +131,10 @@ end
 
 post "/confirm" do
   @title = "お問い合わせ内容確認"
+  @name = params[:name]
+  @email = params[:email]
+  @subject = params[:subject]
+  @message = params[:message]
   erb :confirm
 end
 
