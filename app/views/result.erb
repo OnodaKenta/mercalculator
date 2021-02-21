@@ -8,7 +8,7 @@
   <% if @shippingmethods[0].price == 0 %>
     <p>対応する発送方法がありません</p>
   <% else %>
-    <h2 class="border-start border-4 border-danger ps-2">最安発送方法</h2>
+    <h2 class="border-start border-4 border-danger ps-2 my-4">最安発送方法</h2>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -25,7 +25,7 @@
         <% end %>
       </tbody>
     </table>
-    <h2 class="border-start border-4 border-danger ps-2">発送方法一覧</h2>
+    <h2 class="border-start border-4 border-danger ps-2 my-4">発送方法一覧</h2>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -45,6 +45,6 @@
   <% end %>
 
   <div class="text-center">
-    <a class="btn btn-secondary px-5" href="/">戻る</a>
+    <a class="btn btn-secondary px-5 mt-4" href="/">戻る</a>
   </div>
 </div>
