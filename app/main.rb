@@ -143,3 +143,8 @@ get "/terms" do
   @time = File::Stat.new("./app/views/terms.erb").mtime.getlocal("+09:00")
   erb :terms
 end
+
+get "/privacy" do
+  @title = "プライバシーポリシー"
+  erb :privacy
+end
