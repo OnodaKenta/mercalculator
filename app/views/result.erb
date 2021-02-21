@@ -1,17 +1,20 @@
 <div class="py-4">
   <p>あなたの荷物の大きさは</p>
-  <p>縦:<%= @size[:vertical] %>cm 横:<%= @size[:side] %>cm 厚さ:<%= @size[:thickness] %>cm 重量:<%= @size[:weight] %>g</p>
+  <p><span class="me-3">縦:</span><%= @size[:vertical] %>cm</p>
+  <p><span class="me-3">横:</span><%= @size[:side] %>cm</p>
+  <p>厚さ:<%= @size[:thickness] %>cm</p>
+  <p>重量:<%= @size[:weight] %>g</p>
 
   <% if @shippingmethods[0].price == 0 %>
     <p>対応する発送方法がありません</p>
   <% else %>
-    <p>最安発送方法</p>
+    <h2>最安発送方法</h2>
     <% @cheapest.each do |ch| %>
-      <p><%= ch.name %> 送料<%= ch.price %>円</p>
+      <p><%= ch.name %> <%= ch.price %>円</p>
     <% end %>
-    <p>発送方法一覧</p>
+    <h2>発送方法一覧</h2>
     <% @shippingmethodsort.each do |shipping| %>
-      <p><%= shipping.name %> 送料<%= shipping.price %>円</p>
+      <p><%= shipping.name %> <%= shipping.price %>円</p>
     <% end %>
   <% end %>
 
