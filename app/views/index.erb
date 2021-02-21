@@ -1,12 +1,23 @@
-<h1>検索</h1>
-<form action="/result" method="post">
-  <label>長辺</label>
-  <input class="cm" type="number" name="longside">cm
-  <label>短辺</label>
-  <input class="cm" type="number" name="shortside">cm
-  <label>厚さ</label>
-  <input class="cm" type="number" name="thickness">cm
-  <label>重量</label>
-  <input class="g" type="number" name="weight">g
-  <input class="box" type="submit" value="検索">
-</form>
+<div class="py-4">
+  <form class="d-flex flex-column align-items-center" action="/result" method="post">
+    <div>
+      <label>縦:</label>
+      <input class="num ms-3 my-2" type="number" step="0.1" name="vertical">cm
+    </div>
+    <div>
+      <label>横:</label>
+      <input class="num ms-3 my-2" type="number" step="0.1" name="side">cm
+    </div>
+    <div>
+      <label>厚さ:</label>
+      <input class="num my-2" type="number" step="0.1" name="thickness">cm
+    </div>
+    <div>
+      <label>重量:</label>
+      <input class="num me-3 my-2" type="number" step="0.1" name="weight">g
+    </div>
+    <div>
+      <input class="btn btn-secondary px-5 my-2" type="submit" value="検索">
+    </div>
+  </form>
+<div>

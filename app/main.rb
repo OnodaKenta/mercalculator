@@ -1,58 +1,105 @@
+require "sinatra"
+require "sinatra/reloader"
 require "./app/class/common.rb"
 require "./app/class/lstw.rb"
 require "./app/class/takkyubin.rb"
 require "./app/class/yupack.rb"
 require "./app/class/tanomerubin.rb"
-require "sinatra"
-require "sinatra/reloader"
+require "./app/class/teikei.rb"
+require "./app/class/teikeigai.rb"
 
 set :bind, "0.0.0.0"
 
 get "/" do
-  @title = "送料計算機"
+  @title = "送料計算"
   erb :index
 end
 
 post "/result" do
 
+  size = [params[:vertical].to_i, params[:side].to_i, params[:thickness].to_i].sort.reverse
+  inputlong = size[0]
+  inputshort = size[1]
+  inputthickness = size[2]
+  inputthree = inputlong + inputshort + inputthickness
+  inputweight = params[:weight].to_i
+
   shippingmethods = []
 
-  $lstws.each do |lstw|
-    if params[:longside].to_i <= lstw.lside && params[:shortside].to_i <= lstw.sside && params[:thickness].to_i <= lstw.thickness && params[:weight].to_i <= lstw.weight
-      shippingmethods.push(lstw)
-    end
-  end
-
-  $takkyubins.each do |takkyu|
-    if params[:longside].to_i + params[:shortside].to_i + params[:thickness].to_i <= takkyu.threesides && params[:weight].to_i <= takkyu.weight
-      shippingmethods.push(takkyu)
-      break
-    end
-  end
-
-  $yupacks.each do |yupack|
-    if params[:longside].to_i + params[:shortside].to_i + params[:thickness].to_i <= yupack.threesides && params[:weight].to_i <= yupack.weight
-      shippingmethods.push(yupack)
-      break
-    end
-  end
-
-  $tanomerubins.each do |tanomeru|
-    if params[:longside].to_i + params[:shortside].to_i + params[:thickness].to_i <= tanomeru.threesides
-      shippingmethods.push(tanomeru)
+  $teikeigaistandards.each do |teikeigaistandard|
+    if inputlong <= teikeigaistandard.lside && inputshort <= teikeigaistandard.sside && inputthickness <= teikeigaistandard.thickness && inputweight <= teikeigaistandard.weight
+      shippingmethods.push(teikeigaistandard)
       break
     end
   end
 
   if shippingmethods == []
-    nothing = Common.new(name: "なし", eng: "none", price: 0, type: "-", anonymous: 0, tracking: 0, compensation: 0, note: "-")
-    shippingmethods.push(nothing)
+    $teikeigainonstandards.each do |teikeigainonstandard|
+      if inputlong <= teikeigainonstandard.lside && inputthree <= teikeigainonstandard.threesides && inputweight <= teikeigainonstandard.weight
+        shippingmethods.push(teikeigainonstandard)
+        break
+      end
+    end  
+  end
+
+  $lstws.each do |lstw|
+    if inputlong <= lstw.lside && inputshort <= lstw.sside && inputthickness <= lstw.thickness && inputweight <= lstw.weight
+      shippingmethods.push(lstw)
+    end
+  end
+
+  $takkyubins.each do |takkyubin|
+    if inputthree <= takkyubin.threesides && inputweight <= takkyubin.weight
+      shippingmethods.push(takkyubin)
+      break
+    end
+  end
+
+  $yupacks.each do |yupack|
+    if inputthree <= yupack.threesides && inputweight <= yupack.weight
+      shippingmethods.push(yupack)
+      break
+    end
+  end
+
+  $tanomerubins.each do |tanomerubin|
+    if inputthree <= tanomerubin.threesides
+      shippingmethods.push(tanomerubin)
+      break
+    end
+  end
+
+  $teikeis.each do |teikei|
+    if inputlong <= teikei.lside && inputshort <= teikei.sside && inputthickness <= teikei.thickness && inputweight <= teikei.weight
+      shippingmethods.push(teikei)
+      break
+    end
+  end
+
+  if inputlong <= $yuPacket.lside && inputthickness <= $yuPacket.thickness && inputthree <= $yuPacket.threesides && inputweight <= $yuPacket.weight
+    shippingmethods.push($yuPacket)
+  end
+
+  if inputlong <= $letterPackPlus.lside && inputshort <= $letterPackPlus.sside && inputweight <= $letterPackPlus.weight
+    shippingmethods.push($letterPackPlus)
+  end
+
+  if inputlong <= $takkyubinCompactThin.lside && inputshort <= $takkyubinCompactThin.sside
+    shippingmethods.push($takkyubinCompactThin)
+  end
+
+  if inputlong <= $takkyubinCompact.lside && inputshort <= $takkyubinCompact.sside && inputthickness <= $takkyubinCompact.thickness
+    shippingmethods.push($takkyubinCompact)
+  end
+
+  if shippingmethods == []
+    shippingmethods.push($nothing)
   end
 
   prices = []
 
-  shippingmethods.each do |ship|
-    prices.push(ship.price)
+  shippingmethods.each do |shippingmethod|
+    prices.push(shippingmethod.price)
   end
 
   cheap = prices.min
@@ -65,9 +112,40 @@ post "/result" do
     end
   end
 
+  shippingmethodsort = shippingmethods.sort {|a, b|
+    a.price <=> b.price
+  }
+
   @title = "検索結果"
   @size = params
   @shippingmethods = shippingmethods
   @cheapest = cheapest
+  @shippingmethodsort = shippingmethodsort
   erb :result
+end
+
+get "/inquiry" do
+  @title = "お問い合わせ"
+  erb :inquiry
+end
+
+post "/confirm" do
+  @title = "お問い合わせ内容確認"
+  @name = params[:name]
+  @email = params[:email]
+  @subject = params[:subject]
+  @message = params[:message]
+  erb :confirm
+end
+
+get "/terms" do
+  @title = "利用規約"
+  @time = File::Stat.new("./app/views/terms.erb").mtime.getlocal("+09:00")
+  erb :terms
+end
+
+get "/privacy" do
+  @title = "プライバシーポリシー"
+  @time = File::Stat.new("./app/views/privacy.erb").mtime.getlocal("+09:00")
+  erb :privacy
 end

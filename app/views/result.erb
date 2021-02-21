@@ -1,18 +1,50 @@
-<h1>検索結果</h1>
-<p>あなたの荷物の大きさは</p>
-<p>長辺:<%= @size[:longside] %>cm 短辺:<%= @size[:shortside] %>cm 厚さ:<%= @size[:thickness] %>cm 重量:<%= @size[:weight] %>g</p>
+<div class="py-4">
+  <p>あなたの荷物の大きさは</p>
+  <p><span class="me-3">縦:</span><%= @size[:vertical] %>cm</p>
+  <p><span class="me-3">横:</span><%= @size[:side] %>cm</p>
+  <p>厚さ:<%= @size[:thickness] %>cm</p>
+  <p>重量:<%= @size[:weight] %>g</p>
 
-<% if @shippingmethods[0].price == 0 %>
-  <p>対応する発送方法がありません</p>
-<% else %>
-  <p>最安発送方法</p>
-  <% @cheapest.each do |ch| %>
-    <p><%= ch.name %> 送料<%= ch.price %>円</p>
+  <% if @shippingmethods[0].price == 0 %>
+    <p>対応する発送方法がありません</p>
+  <% else %>
+    <h2 class="border-start border-4 border-danger ps-2 my-4">最安発送方法</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>発送方法</th>
+          <th>送料</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cheapest.each do |ch| %>
+          <tr>
+            <td><%= ch.name %></td>
+            <td><%= ch.price %>円</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <h2 class="border-start border-4 border-danger ps-2 my-4">発送方法一覧</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>発送方法</th>
+          <th>送料</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @shippingmethodsort.each do |shipping| %>
+          <tr>
+            <td><%= shipping.name %></td>
+            <td><%= shipping.price %>円</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   <% end %>
-  <p>発送方法一覧</p>
-  <% @shippingmethods.each do |shipmethod| %>
-    <p><%= shipmethod.name %> 送料<%= shipmethod.price %>円</p>
-  <% end %>
-<% end %>
 
-<a href="/">戻る</a>
+  <div class="text-center">
+    <a class="btn btn-secondary px-5 mt-4" href="/">戻る</a>
+  </div>
+</div>

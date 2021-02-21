@@ -3,12 +3,21 @@ body {
   font-weight: 500;
 }
 
-.cm {
-  width: 2rem;
+main {
+  min-height: calc(100vh - 112px);
 }
 
-.g {
-  width: 3rem;
+.wrapper-main {
+  max-width: 720px;
+}
+
+.num {
+  width: 4rem;
+}
+
+.br {
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 input[type="number"]::-webkit-outer-spin-button, 
