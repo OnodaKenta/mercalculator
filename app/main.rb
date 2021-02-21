@@ -146,5 +146,6 @@ end
 
 get "/privacy" do
   @title = "プライバシーポリシー"
+  @time = File::Stat.new("./app/views/privacy.erb").mtime.getlocal("+09:00")
   erb :privacy
 end
