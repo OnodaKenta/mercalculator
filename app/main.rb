@@ -1,13 +1,16 @@
 require "sinatra"
 require "sinatra/reloader"
+require "dotenv"
+require "gmail"
 require "./app/class/common.rb"
 require "./app/class/lstw.rb"
 require "./app/class/takkyubin.rb"
-require "./app/class/yupack.rb"
 require "./app/class/tanomerubin.rb"
 require "./app/class/teikei.rb"
 require "./app/class/teikeigai.rb"
+require "./app/class/yupack.rb"
 
+Dotenv.load("./.env")
 set :bind, "0.0.0.0"
 
 get "/" do
@@ -139,6 +142,27 @@ post "/confirm" do
 end
 
 post "/send" do
+  name = params[:name]
+  email = params[:email]
+  subject = params[:subject]
+  message = params[:message]
+
+  username = ENV["GMAIL_ADRESS"]
+  password = ENV["GMAIL_PASSWORD"]
+
+  gmail = Gmail.connect(username, password)
+
+  gmail.deliver do
+    to "#{username}"
+    subject "お問い合わせ: #{subject}"
+    html_part do
+      content_type "text/html; charset=UTF-8"
+      body "from: #{name}(#{email})<br>subject: #{subject}<br>本文:<br>#{message}"
+    end
+  end
+
+  gmail.logout
+
   @title = "送信完了"
   erb :send
 end

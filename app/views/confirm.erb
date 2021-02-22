@@ -5,6 +5,10 @@
   <p class="br">本文:<br><%= @message %></p>
   <div class="text-center">
     <form action="/send" method="post">
+      <input type="hidden" value="<%= @name %>" name="name">
+      <input type="hidden" value="<%= @email %>" name="email">
+      <input type="hidden" value="<%= @subject %>" name="subject">
+      <input type="hidden" value="<%= @message %>" name="message">
       <input class="btn btn-secondary px-5 my-2" type="submit" value="送信">
     </form>
   <div>
