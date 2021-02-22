@@ -29,3 +29,9 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"] { 
   -moz-appearance:textfield; 
 }
+
+@media screen and (min-width: 992px) {
+  .inquiry {
+    width: 50%!important;
+  }
+}
