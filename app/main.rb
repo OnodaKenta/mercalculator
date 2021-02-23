@@ -12,6 +12,7 @@ require "./app/class/yupack.rb"
 
 Dotenv.load("./.env")
 set :bind, "0.0.0.0"
+set :views, settings.root + "/views"
 
 get "/" do
   @title = "送料計算"
@@ -177,4 +178,9 @@ get "/privacy" do
   @title = "プライバシーポリシー"
   @time = File::Stat.new("./app/views/privacy.erb").mtime.getlocal("+09:00")
   erb :privacy
+end
+
+get "/method/:methodname" do |mname|
+  @title = eval("$#{mname}").name
+  erb mname.to_sym
 end
