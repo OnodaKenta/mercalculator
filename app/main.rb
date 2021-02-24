@@ -181,6 +181,7 @@ get "/privacy" do
 end
 
 get "/method/:methodname" do |mname|
-  @title = eval("$#{mname}").name
+  @method = eval("$#{mname}")
+  @title = @method.name
   erb mname.to_sym
 end

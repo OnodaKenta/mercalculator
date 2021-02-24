@@ -6,9 +6,9 @@ class Tanomerubin < Common
     @url = "/method/tanomerubin"
     @price = price
     @type = "梱包・発送たのメル便"
-    @anonymous = 1
-    @tracking = 1
-    @compensation = 1
+    @anonymous = "○"
+    @tracking = "○"
+    @compensation = "○"
     @note = "梱包・集荷・発送をすべてプロにおまかせで大型商品を手間なく出品!"
     @threesides = threesides
     $tanomerubins.push(self)

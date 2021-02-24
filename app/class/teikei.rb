@@ -6,9 +6,9 @@ class Teikei < Common
     @url = "/method/teikei"
     @price = price
     @type = "日本郵便"
-    @anonymous = 0
-    @tracking = 0
-    @compensation = 0
+    @anonymous = "×"
+    @tracking = "×"
+    @compensation = "×"
     @note = "長辺短辺下限あり"
     @lside = 23.5
     @sside = 12

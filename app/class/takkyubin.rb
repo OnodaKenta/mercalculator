@@ -6,9 +6,9 @@ class Takkyubin < Common
     @url = "/method/takkyubin"
     @price = price
     @type = "らくらくメルカリ便"
-    @anonymous = 1
-    @tracking = 1
-    @compensation = 1
+    @anonymous = "○"
+    @tracking = "○"
+    @compensation = "○"
     @note = "-"
     @threesides = threesides
     @weight = weight

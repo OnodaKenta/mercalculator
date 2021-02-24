@@ -6,9 +6,9 @@ class Yupack < Common
     @url = "/method/yupack"
     @price = price
     @type = "ゆうゆうメルカリ便"
-    @anonymous = 1
-    @tracking = 1
-    @compensation = 1
+    @anonymous = "○"
+    @tracking = "○"
+    @compensation = "○"
     @note = "-"
     @threesides = threesides
     @weight = 25000
