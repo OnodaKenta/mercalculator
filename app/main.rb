@@ -183,5 +183,5 @@ end
 get "/method/:methodname" do |mname|
   @method = eval("$#{mname}")
   @title = @method.name
-  erb mname.to_sym
+  erb mname.to_sym, :layout => :layoutmethod
 end
