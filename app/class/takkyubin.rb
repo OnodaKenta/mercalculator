@@ -18,9 +18,10 @@ end
 
 $takkyubins = []
 
-tbin60 = Takkyubin.new(name: "宅急便60サイズ", price: 700, threesides: 60, weight: 2000)
-tbin80 = Takkyubin.new(name: "宅急便80サイズ", price: 800, threesides: 80, weight: 5000)
-tbin100 = Takkyubin.new(name: "宅急便100サイズ", price: 1000, threesides: 100, weight: 10000)
-tbin120 = Takkyubin.new(name: "宅急便120サイズ", price: 1100, threesides: 120, weight: 15000)
-tbin140 = Takkyubin.new(name: "宅急便140サイズ", price: 1300, threesides: 140, weight: 20000)
-tbin160 = Takkyubin.new(name: "宅急便160サイズ", price: 1600, threesides: 160, weight: 25000)
+$takkyubin = Takkyubin.new(name: "宅急便60サイズ", price: 700, threesides: 60, weight: 2000)
+$takkyubin.titlename = "宅急便"
+takkyubin80 = Takkyubin.new(name: "宅急便80サイズ", price: 800, threesides: 80, weight: 5000)
+takkyubin100 = Takkyubin.new(name: "宅急便100サイズ", price: 1000, threesides: 100, weight: 10000)
+takkyubin120 = Takkyubin.new(name: "宅急便120サイズ", price: 1100, threesides: 120, weight: 15000)
+takkyubin140 = Takkyubin.new(name: "宅急便140サイズ", price: 1300, threesides: 140, weight: 20000)
+takkyubin160 = Takkyubin.new(name: "宅急便160サイズ", price: 1600, threesides: 160, weight: 25000)

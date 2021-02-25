@@ -180,6 +180,12 @@ get "/privacy" do
   erb :privacy
 end
 
+get "/method/takkyubin" do
+  @method = eval("$takkyubin")
+  @title = @method.titlename
+  erb :takkyubin
+end
+
 get "/method/:methodname" do |mname|
   @method = eval("$#{mname}")
   @title = @method.name

@@ -1,5 +1,6 @@
 class Common
   attr_accessor :name
+  attr_accessor :titlename
   attr_accessor :url
   attr_accessor :fee
   attr_accessor :box
