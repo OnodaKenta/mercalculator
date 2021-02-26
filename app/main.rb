@@ -183,6 +183,7 @@ end
 get "/method/takkyubin" do
   @method = eval("$takkyubin")
   @title = @method.titlename
+  @takkyubins = $takkyubins
   erb :takkyubin
 end
 

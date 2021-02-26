@@ -65,4 +65,40 @@
       </tr>
     </tbody>
   </table>
+  <h2 class="border-start border-4 border-danger ps-2 my-4">サイズ別料金</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>サイズ</th>
+        <th>料金</th>
+        <th>3辺合計</th>
+        <th>重量</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @takkyubins.each do |takkyubin| %>
+        <tr>
+          <td><%= takkyubin.threesides %>サイズ</td>
+          <td><%= takkyubin.price %>円</td>
+          <td><%= takkyubin.threesides %>cm</td>
+          <% if takkyubin.weight >= 1000 %>
+            <td><%= takkyubin.weight / 1000 %>kg</td>
+          <% else %>
+            <td><%= takkyubin.weight %>g</td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <h2 class="border-start border-4 border-danger ps-2 my-4">備考</h2>
+  <ul>
+    <li>全国一律料金</li>
+    <li>集荷の場合取引ごとに集荷料30円</li>
+    <li>対面でお届け</li>
+  </ul>
+  <h2 class="border-start border-4 border-danger ps-2 my-4">参考サイト</h2>
+  <div class="d-flex flex-column">
+    <a href="https://www.mercari.com/jp/rakuraku-mercari/">らくらくメルカリ便 - メルカリ スマホでかんたん フリマアプリ</a>
+    <a href="https://www.mercari.com/jp/help_center/article/136/">中〜大型サイズ - 宅急便（らくらくメルカリ便） - メルカリ スマホでかんたん フリマアプリ</a>
+  </div>
 </div>
