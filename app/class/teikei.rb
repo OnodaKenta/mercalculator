@@ -20,5 +20,5 @@ end
 
 $teikeis = []
 
-teikei25 = Teikei.new(price: 84, weight: 25)
+$teikei = Teikei.new(price: 84, weight: 25)
 teikei50 = Teikei.new(price: 94, weight: 50)

@@ -1,0 +1,104 @@
+<div class="py-4">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>項目</th>
+        <th>値</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>配送方法</td>
+        <td><%= @method.name %></td>
+      </tr>
+      <tr>
+        <td>料金</td>
+        <td>下記参照</td>
+      </tr>
+      <tr>
+        <td>種類</td>
+        <td><%= @method.type %></td>
+      </tr>
+      <tr>
+        <td>縦</td>
+        <% if @method.lside.nil? == false %>
+          <td><%= @method.lside %>cm</td>
+        <% else %>
+          <td>-</td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>横</td>
+        <% if @method.sside.nil? == false %>
+          <td><%= @method.sside %>cm</td>
+        <% else %>
+          <td>-</td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>厚さ</td>
+        <% if @method.thickness.nil? == false %>
+          <td><%= @method.thickness %>cm</td>
+        <% else %>
+          <td>-</td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>3辺合計</td>
+        <% if @method.threesides.nil? == false %>
+          <td><%= @method.threesides %>cm</td>
+        <% else %>
+          <td>-</td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>重量</td>
+        <td>下記参照</td>
+      </tr>
+      <tr>
+        <td>匿名配送</td>
+        <td><%= @method.anonymous %></td>
+      </tr>
+      <tr>
+        <td>追跡</td>
+        <td><%= @method.tracking %></td>
+      </tr>
+      <tr>
+        <td>補償</td>
+        <td><%= @method.compensation %></td>
+      </tr>
+    </tbody>
+  </table>
+  <h2 class="border-start border-4 border-danger ps-2 my-4">重量別料金</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>重量</th>
+        <th>料金</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @teikeis.each do |teikei| %>
+        <tr>
+          <% if teikei.weight >= 1000 %>
+            <td><%= teikei.weight / 1000 %>kg</td>
+          <% else %>
+            <td><%= teikei.weight %>g</td>
+          <% end %>
+          <td><%= teikei.price %>円</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <h2 class="border-start border-4 border-danger ps-2 my-4">備考</h2>
+  <ul>
+    <li>縦14cm横9cm以上の下限あり</li>
+    <li>郵便受けへお届け</li>
+  </ul>
+  <h2 class="border-start border-4 border-danger ps-2 my-4">参考サイト</h2>
+  <div class="d-flex flex-column">
+    <a href="https://www.post.japanpost.jp/service/standard/one_size.html">定形郵便物・定形外郵便物のサイズ・重さについて - 日本郵便</a>
+    <a href="https://www.post.japanpost.jp/service/standard/one_price.html">定形郵便物・定形外郵便物の料金 - 日本郵便</a>
+    <a href="https://www.mercari.com/jp/help_center/article/73/">普通郵便（定形、定形外） - メルカリ スマホでかんたん フリマアプリ</a>
+  </div>
+</div>

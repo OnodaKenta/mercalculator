@@ -194,6 +194,22 @@ get "/method/tanomerubin" do
   erb :tanomerubin
 end
 
+get "/method/teikei" do
+  @method = eval("$teikei")
+  @title = @method.name
+  @teikeis = $teikeis
+  erb :teikei
+end
+
+get "/method/teikeigai" do
+  @method = eval("$teikeigai")
+  @method2 = $teikeigainonstandard
+  @title = @method.titlename
+  @teikeigaistandards = $teikeigaistandards
+  @teikeigainonstandards = $teikeigainonstandards
+  erb :teikeigai
+end
+
 get "/method/:methodname" do |mname|
   @method = eval("$#{mname}")
   @title = @method.name
