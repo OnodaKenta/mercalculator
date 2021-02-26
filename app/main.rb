@@ -187,6 +187,13 @@ get "/method/takkyubin" do
   erb :takkyubin
 end
 
+get "/method/tanomerubin" do
+  @method = eval("$tanomerubin")
+  @title = @method.titlename
+  @tanomerubins = $tanomerubins
+  erb :tanomerubin
+end
+
 get "/method/:methodname" do |mname|
   @method = eval("$#{mname}")
   @title = @method.name

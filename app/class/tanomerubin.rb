@@ -10,6 +10,8 @@ class Tanomerubin < Common
     @tracking = "○"
     @compensation = "○"
     @note = "梱包・集荷・発送をすべてプロにおまかせで大型商品を手間なく出品!"
+    @lside = 250
+    @weight = 150000
     @threesides = threesides
     $tanomerubins.push(self)
   end
@@ -17,7 +19,8 @@ end
 
 $tanomerubins = []
 
-tanomerubin80 = Tanomerubin.new(name: "梱包・発送たのメル便80サイズ", price: 1700, threesides: 80)
+$tanomerubin = Tanomerubin.new(name: "梱包・発送たのメル便80サイズ", price: 1700, threesides: 80)
+$tanomerubin.titlename = "梱包・発送たのメル便"
 tanomerubin120 = Tanomerubin.new(name: "梱包・発送たのメル便120サイズ", price: 2400, threesides: 120)
 tanomerubin160 = Tanomerubin.new(name: "梱包・発送たのメル便160サイズ", price: 3400, threesides: 160)
 tanomerubin200 = Tanomerubin.new(name: "梱包・発送たのメル便200サイズ", price: 5000, threesides: 200)
