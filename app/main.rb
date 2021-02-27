@@ -8,7 +8,7 @@ require "./app/class/takkyubin.rb"
 require "./app/class/tanomerubin.rb"
 require "./app/class/teikei.rb"
 require "./app/class/teikeigai.rb"
-require "./app/class/yupack.rb"
+require "./app/class/yuPack.rb"
 
 Dotenv.load("./.env")
 set :bind, "0.0.0.0"
@@ -59,9 +59,9 @@ post "/result" do
     end
   end
 
-  $yupacks.each do |yupack|
-    if inputthree <= yupack.threesides && inputweight <= yupack.weight
-      shippingmethods.push(yupack)
+  $yuPacks.each do |yuPack|
+    if inputthree <= yuPack.threesides && inputweight <= yuPack.weight
+      shippingmethods.push(yuPack)
       break
     end
   end
@@ -208,6 +208,13 @@ get "/method/teikeigai" do
   @teikeigaistandards = $teikeigaistandards
   @teikeigainonstandards = $teikeigainonstandards
   erb :teikeigai
+end
+
+get "/method/yuPack" do
+  @method = $yuPack
+  @title = @method.titlename
+  @yuPacks = $yuPacks
+  erb :yuPack
 end
 
 get "/method/:methodname" do |mname|
