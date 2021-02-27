@@ -41,7 +41,7 @@ $letterPackPlus.lside = 34
 $letterPackPlus.sside = 24.8
 $letterPackPlus.weight = 4000
 
-$takkyubinCompactThin = Common.new(name: "宅急便コンパクト薄型BOX", url: "/method/takkyubinCompactThin", fee: 380, box: 70, type: "らくらくメルカリ便", anonymous: "○", tracking: "○", compensation: "○", note: "厚さ注意!専用薄型BOX(70円)")
+$takkyubinCompactThin = Common.new(name: "宅急便コンパクト薄型BOX", url: "/method/takkyubinCompact", fee: 380, box: 70, type: "らくらくメルカリ便", anonymous: "○", tracking: "○", compensation: "○", note: "厚さ注意!専用薄型BOX(70円)")
 $takkyubinCompactThin.lside = 34
 $takkyubinCompactThin.sside = 24.8
 

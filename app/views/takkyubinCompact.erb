@@ -1,0 +1,151 @@
+<div class="py-4">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>項目</th>
+        <th>値</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>配送方法</td>
+        <td><%= @method.name %></td>
+      </tr>
+      <tr>
+        <td>料金</td>
+        <td><%= @method.price %>円</td>
+      </tr>
+      <tr>
+        <td>種類</td>
+        <td><%= @method.type %></td>
+      </tr>
+      <tr>
+        <td>縦</td>
+        <td>下記参照</td>
+      </tr>
+      <tr>
+        <td>横</td>
+        <td>下記参照</td>
+      </tr>
+      <tr>
+        <td>厚さ</td>
+        <td>下記参照</td>
+      </tr>
+      <tr>
+        <td>3辺合計</td>
+        <% if @method.threesides.nil? == false %>
+          <td><%= @method.threesides %>cm</td>
+        <% else %>
+          <td>-</td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>重量</td>
+        <% if @method.weight.nil? == false %>
+          <% if @method.weight >= 1000 %>
+            <td><%= @method.weight / 1000 %>kg</td>
+          <% else %>
+            <td><%= @method.weight %>g</td>
+          <% end %>
+        <% else %>
+          <td>-</td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>匿名配送</td>
+        <td><%= @method.anonymous %></td>
+      </tr>
+      <tr>
+        <td>追跡</td>
+        <td><%= @method.tracking %></td>
+      </tr>
+      <tr>
+        <td>補償</td>
+        <td><%= @method.compensation %></td>
+      </tr>
+    </tbody>
+  </table>
+  <h2 class="border-start border-4 border-danger ps-2 my-4"><%= $takkyubinCompact.name %></h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>項目</th>
+        <th>値</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>縦</td>
+        <% if @method.lside.nil? == false %>
+          <td><%= @method.lside %>cm</td>
+        <% else %>
+          <td>-</td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>横</td>
+        <% if @method.sside.nil? == false %>
+          <td><%= @method.sside %>cm</td>
+        <% else %>
+          <td>-</td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>厚さ</td>
+        <% if @method.thickness.nil? == false %>
+          <td><%= @method.thickness %>cm</td>
+        <% else %>
+          <td>-</td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+  <h2 class="border-start border-4 border-danger ps-2 my-4"><%= $takkyubinCompactThin.name %></h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>項目</th>
+        <th>値</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>縦</td>
+        <% if @method2.lside.nil? == false %>
+          <td><%= @method2.lside %>cm</td>
+        <% else %>
+          <td>-</td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>横</td>
+        <% if @method2.sside.nil? == false %>
+          <td><%= @method2.sside %>cm</td>
+        <% else %>
+          <td>-</td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>厚さ</td>
+        <% if @method2.thickness.nil? == false %>
+          <td><%= @method2.thickness %>cm</td>
+        <% else %>
+          <td>-</td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+  <h2 class="border-start border-4 border-danger ps-2 my-4">備考</h2>
+  <ul>
+    <li>専用BOXが必要</li>
+    <li>専用BOXと専用薄型BOXの2種類あり</li>
+    <li>専用薄型BOXは厚さに注意</li>
+    <li>配送料金380円 + 専用BOX70円 = 合計450円</li>
+    <li>対面でお届け</li>
+  </ul>
+  <h2 class="border-start border-4 border-danger ps-2 my-4">参考サイト</h2>
+  <div class="d-flex flex-column">
+    <a href="https://www.mercari.com/jp/rakuraku-mercari/">らくらくメルカリ便 - メルカリ スマホでかんたん フリマアプリ</a>
+    <a href="https://www.mercari.com/jp/help_center/article/135/">小〜中型サイズ - 宅急便コンパクト（らくらくメルカリ便） - メルカリ スマホでかんたん フリマアプリ</a>
+  </div>
+</div>

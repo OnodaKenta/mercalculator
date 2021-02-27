@@ -187,6 +187,13 @@ get "/method/takkyubin" do
   erb :takkyubin
 end
 
+get "/method/takkyubinCompact" do
+  @method = $takkyubinCompact
+  @method2 = $takkyubinCompactThin
+  @title = @method.name
+  erb :takkyubinCompact
+end
+
 get "/method/tanomerubin" do
   @method = $tanomerubin
   @title = @method.titlename
