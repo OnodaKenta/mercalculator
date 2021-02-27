@@ -181,28 +181,28 @@ get "/privacy" do
 end
 
 get "/method/takkyubin" do
-  @method = eval("$takkyubin")
+  @method = $takkyubin
   @title = @method.titlename
   @takkyubins = $takkyubins
   erb :takkyubin
 end
 
 get "/method/tanomerubin" do
-  @method = eval("$tanomerubin")
+  @method = $tanomerubin
   @title = @method.titlename
   @tanomerubins = $tanomerubins
   erb :tanomerubin
 end
 
 get "/method/teikei" do
-  @method = eval("$teikei")
+  @method = $teikei
   @title = @method.name
   @teikeis = $teikeis
   erb :teikei
 end
 
 get "/method/teikeigai" do
-  @method = eval("$teikeigai")
+  @method = $teikeigai
   @method2 = $teikeigainonstandard
   @title = @method.titlename
   @teikeigaistandards = $teikeigaistandards
