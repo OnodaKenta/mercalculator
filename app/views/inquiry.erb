@@ -1,5 +1,6 @@
 <div class="py-4">
   <form class="d-flex flex-column align-items-center" action="/confirm" method="post">
+    <%= csrf_tag %>
     <div class="w-100 inquiry">
       <div>お名前</div>
       <input class="my-2 w-100" type="text" name="name" required>

@@ -2,6 +2,7 @@ require "sinatra"
 require "sinatra/reloader"
 require "dotenv"
 require "gmail"
+require "rack/csrf"
 require "./app/class/common.rb"
 require "./app/class/lstw.rb"
 require "./app/class/takkyubin.rb"
@@ -13,9 +14,16 @@ require "./app/class/yuPack.rb"
 Dotenv.load("./.env")
 set :bind, "0.0.0.0"
 
+use Rack::Session::Cookie, secret: ENV["RACK_SECRET"]
+use Rack::Csrf, raise: true
+
 helpers do
   def h(str)
     Rack::Utils.escape_html(str)
+  end
+
+  def csrf_tag
+    Rack::Csrf.csrf_tag(env)
   end
 end
 

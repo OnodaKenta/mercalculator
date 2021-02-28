@@ -5,6 +5,7 @@
   <p class="br">本文:<br><%= h(@message) %></p>
   <div class="text-center">
     <form action="/send" method="post">
+      <%= csrf_tag %>
       <input type="hidden" value="<%= @name %>" name="name">
       <input type="hidden" value="<%= @email %>" name="email">
       <input type="hidden" value="<%= @subject %>" name="subject">

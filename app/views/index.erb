@@ -1,5 +1,6 @@
 <div class="py-4">
   <form class="d-flex flex-column align-items-center" action="/result" method="post">
+    <%= csrf_tag %>
     <div>
       <label>縦:</label>
       <input class="num ms-3 my-2" type="number" step="0.1" name="vertical" required>cm
