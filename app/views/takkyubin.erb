@@ -1,0 +1,104 @@
+<div class="py-4">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>項目</th>
+        <th>値</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>配送方法</td>
+        <td><%= @method.titlename %></td>
+      </tr>
+      <tr>
+        <td>料金</td>
+        <td>下記参照</td>
+      </tr>
+      <tr>
+        <td>種類</td>
+        <td><%= @method.type %></td>
+      </tr>
+      <tr>
+        <td>縦</td>
+        <% if @method.lside.nil? == false %>
+          <td><%= @method.lside %>cm</td>
+        <% else %>
+          <td>-</td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>横</td>
+        <% if @method.sside.nil? == false %>
+          <td><%= @method.sside %>cm</td>
+        <% else %>
+          <td>-</td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>厚さ</td>
+        <% if @method.thickness.nil? == false %>
+          <td><%= @method.thickness %>cm</td>
+        <% else %>
+          <td>-</td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>3辺合計</td>
+        <td>下記参照</td>
+      </tr>
+      <tr>
+        <td>重量</td>
+        <td>下記参照</td>
+      </tr>
+      <tr>
+        <td>匿名配送</td>
+        <td><%= @method.anonymous %></td>
+      </tr>
+      <tr>
+        <td>追跡</td>
+        <td><%= @method.tracking %></td>
+      </tr>
+      <tr>
+        <td>補償</td>
+        <td><%= @method.compensation %></td>
+      </tr>
+    </tbody>
+  </table>
+  <h2 class="border-start border-4 border-danger ps-2 my-4">サイズ別料金</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>サイズ</th>
+        <th>料金</th>
+        <th>3辺合計</th>
+        <th>重量</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @takkyubins.each do |takkyubin| %>
+        <tr>
+          <td><%= takkyubin.threesides %>サイズ</td>
+          <td><%= takkyubin.price %>円</td>
+          <td><%= takkyubin.threesides %>cm</td>
+          <% if takkyubin.weight >= 1000 %>
+            <td><%= takkyubin.weight / 1000 %>kg</td>
+          <% else %>
+            <td><%= takkyubin.weight %>g</td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <h2 class="border-start border-4 border-danger ps-2 my-4">備考</h2>
+  <ul>
+    <li>全国一律料金</li>
+    <li>集荷の場合取引ごとに集荷料30円</li>
+    <li>対面でお届け</li>
+  </ul>
+  <h2 class="border-start border-4 border-danger ps-2 my-4">参考サイト</h2>
+  <div class="d-flex flex-column">
+    <a href="https://www.mercari.com/jp/rakuraku-mercari/" target="_blank" rel="noopener noreferrer">らくらくメルカリ便 - メルカリ スマホでかんたん フリマアプリ</a>
+    <a href="https://www.mercari.com/jp/help_center/article/136/" target="_blank" rel="noopener noreferrer">中〜大型サイズ - 宅急便（らくらくメルカリ便） - メルカリ スマホでかんたん フリマアプリ</a>
+  </div>
+</div>

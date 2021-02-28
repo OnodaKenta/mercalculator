@@ -1,20 +1,21 @@
 <div class="py-4">
   <form class="d-flex flex-column align-items-center" action="/result" method="post">
+    <%= csrf_tag %>
     <div>
       <label>縦:</label>
-      <input class="num ms-3 my-2" type="number" step="0.1" name="vertical">cm
+      <input class="num ms-3 my-2" type="number" step="0.1" name="vertical" required>cm
     </div>
     <div>
       <label>横:</label>
-      <input class="num ms-3 my-2" type="number" step="0.1" name="side">cm
+      <input class="num ms-3 my-2" type="number" step="0.1" name="side" required>cm
     </div>
     <div>
       <label>厚さ:</label>
-      <input class="num my-2" type="number" step="0.1" name="thickness">cm
+      <input class="num my-2" type="number" step="0.1" name="thickness" required>cm
     </div>
     <div>
       <label>重量:</label>
-      <input class="num me-3 my-2" type="number" step="0.1" name="weight">g
+      <input class="num me-3 my-2" type="number" step="0.1" name="weight" required>g
     </div>
     <div>
       <input class="btn btn-secondary px-5 my-2" type="submit" value="検索">

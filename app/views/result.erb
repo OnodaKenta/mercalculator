@@ -19,7 +19,7 @@
       <tbody>
         <% @cheapest.each do |ch| %>
           <tr>
-            <td><%= ch.name %></td>
+            <td><a href="<%= ch.url %>"><%= ch.name %></a></td>
             <td><%= ch.price %>円</td>
           </tr>
         <% end %>
@@ -36,7 +36,7 @@
       <tbody>
         <% @shippingmethodsort.each do |shipping| %>
           <tr>
-            <td><%= shipping.name %></td>
+            <td><a href="<%= shipping.url %>"><%= shipping.name %></a></td>
             <td><%= shipping.price %>円</td>
           </tr>
         <% end %>

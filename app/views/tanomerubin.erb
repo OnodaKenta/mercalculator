@@ -1,0 +1,106 @@
+<div class="py-4">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>項目</th>
+        <th>値</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>配送方法</td>
+        <td><%= @method.titlename %></td>
+      </tr>
+      <tr>
+        <td>料金</td>
+        <td>下記参照</td>
+      </tr>
+      <tr>
+        <td>種類</td>
+        <td><%= @method.type %></td>
+      </tr>
+      <tr>
+        <td>縦</td>
+        <% if @method.lside.nil? == false %>
+          <td><%= @method.lside %>cm</td>
+        <% else %>
+          <td>-</td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>横</td>
+        <% if @method.sside.nil? == false %>
+          <td><%= @method.sside %>cm</td>
+        <% else %>
+          <td>-</td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>厚さ</td>
+        <% if @method.thickness.nil? == false %>
+          <td><%= @method.thickness %>cm</td>
+        <% else %>
+          <td>-</td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>3辺合計</td>
+        <td>下記参照</td>
+      </tr>
+      <tr>
+        <td>重量</td>
+        <% if @method.weight.nil? == false %>
+          <% if @method.weight >= 1000 %>
+            <td><%= @method.weight / 1000 %>kg</td>
+          <% else %>
+            <td><%= @method.weight %>g</td>
+          <% end %>
+        <% else %>
+          <td>-</td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>匿名配送</td>
+        <td><%= @method.anonymous %></td>
+      </tr>
+      <tr>
+        <td>追跡</td>
+        <td><%= @method.tracking %></td>
+      </tr>
+      <tr>
+        <td>補償</td>
+        <td><%= @method.compensation %></td>
+      </tr>
+    </tbody>
+  </table>
+  <h2 class="border-start border-4 border-danger ps-2 my-4">サイズ別料金</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>サイズ</th>
+        <th>料金</th>
+        <th>3辺合計</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tanomerubins.each do |tanomerubin| %>
+        <tr>
+          <td><%= tanomerubin.threesides %>サイズ</td>
+          <td><%= tanomerubin.price %>円</td>
+          <td><%= tanomerubin.threesides %>cm</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <h2 class="border-start border-4 border-danger ps-2 my-4">備考</h2>
+  <ul>
+    <li>注意事項多数あり</li>
+    <li>詳細は<a href="https://www.mercari.com/jp/help_center/category/15/" target="_blank" rel="noopener noreferrer">梱包・発送たのメル便についてのよくある質問</a></li>
+  </ul>
+  <h2 class="border-start border-4 border-danger ps-2 my-4">参考サイト</h2>
+  <div class="d-flex flex-column">
+    <a href="https://www.mercari.com/jp/tanomeru/" target="_blank" rel="noopener noreferrer">梱包・発送たのメル便 - メルカリ スマホでかんたん フリマアプリ</a>
+    <a href="https://www.mercari.com/jp/help_center/category/15/" target="_blank" rel="noopener noreferrer">梱包・発送たのメル便についてのよくある質問 - メルカリ スマホでかんたん フリマアプリ</a>
+    <a href="https://www.mercari.com/jp/help_center/article/215/" target="_blank" rel="noopener noreferrer">送料（梱包・発送たのメル便） - メルカリ スマホでかんたん フリマアプリ</a>
+  </div>
+</div>

@@ -1,4 +1,4 @@
 /.devcontainer/
+/.env
 /app/Dockerfile
 /docker-compose.yml
-/html/
