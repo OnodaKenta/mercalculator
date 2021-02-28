@@ -12,7 +12,12 @@ require "./app/class/yuPack.rb"
 
 Dotenv.load("./.env")
 set :bind, "0.0.0.0"
-set :views, settings.root + "/views"
+
+helpers do
+  def h(str)
+    Rack::Utils.escape_html(str)
+  end
+end
 
 get "/" do
   @title = "送料計算"

@@ -1,8 +1,8 @@
 <div class="py-4">
-  <p class="br">お名前: <%= @name %></p>
-  <p class="br">メール: <%= @email %></p>
-  <p class="br">件名: <%= @subject %></p>
-  <p class="br">本文:<br><%= @message %></p>
+  <p class="br">お名前: <%= h(@name) %></p>
+  <p class="br">メール: <%= h(@email) %></p>
+  <p class="br">件名: <%= h(@subject) %></p>
+  <p class="br">本文:<br><%= h(@message) %></p>
   <div class="text-center">
     <form action="/send" method="post">
       <input type="hidden" value="<%= @name %>" name="name">
