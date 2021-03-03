@@ -1,10 +1,12 @@
 require "./app/class/common.rb"
 
 class TeikeigaiStandard < Common
-  def initialize(price:, weight:)
+  def initialize(fee:, weight:)
     @name = "定形外郵便 規格内"
     @url = "/method/teikeigai"
-    @price = price
+    @fee = fee
+    @box = 0
+    @price = fee + 0
     @type = "日本郵便"
     @anonymous = "×"
     @tracking = "×"
@@ -18,10 +20,12 @@ class TeikeigaiStandard < Common
 end
 
 class TeikeigaiNonStandard < Common
-  def initialize(price:, weight:)
+  def initialize(fee:, weight:)
     @name = "定形外郵便 規格外"
     @url = "/method/teikeigai"
-    @price = price
+    @fee = fee
+    @box = 0
+    @price = fee + 0
     @type = "日本郵便"
     @anonymous = 0
     @tracking = 0
@@ -37,19 +41,19 @@ end
 $teikeigaistandards = []
 $teikeigainonstandards = []
 
-$teikeigai = TeikeigaiStandard.new(price: 120, weight: 50)
+$teikeigai = TeikeigaiStandard.new(fee: 120, weight: 50)
 $teikeigai.titlename = "定形外郵便"
-teikeigaistandard100 = TeikeigaiStandard.new(price: 140, weight: 100)
-teikeigaistandard150 = TeikeigaiStandard.new(price: 210, weight: 150)
-teikeigaistandard250 = TeikeigaiStandard.new(price: 250, weight: 250)
-teikeigaistandard500 = TeikeigaiStandard.new(price: 390, weight: 500)
-teikeigaistandard1000 = TeikeigaiStandard.new(price: 580, weight: 1000)
+teikeigaistandard100 = TeikeigaiStandard.new(fee: 140, weight: 100)
+teikeigaistandard150 = TeikeigaiStandard.new(fee: 210, weight: 150)
+teikeigaistandard250 = TeikeigaiStandard.new(fee: 250, weight: 250)
+teikeigaistandard500 = TeikeigaiStandard.new(fee: 390, weight: 500)
+teikeigaistandard1000 = TeikeigaiStandard.new(fee: 580, weight: 1000)
 
-$teikeigainonstandard = TeikeigaiNonStandard.new(price: 200, weight: 50)
-teikeigainonstandard100 = TeikeigaiNonStandard.new(price: 220, weight: 100)
-teikeigainonstandard150 = TeikeigaiNonStandard.new(price: 300, weight: 150)
-teikeigainonstandard250 = TeikeigaiNonStandard.new(price: 350, weight: 250)
-teikeigainonstandard500 = TeikeigaiNonStandard.new(price: 510, weight: 500)
-teikeigainonstandard1000 = TeikeigaiNonStandard.new(price: 710, weight: 1000)
-teikeigainonstandard2000 = TeikeigaiNonStandard.new(price: 1040, weight: 2000)
-teikeigainonstandard4000 = TeikeigaiNonStandard.new(price: 1350, weight: 4000)
+$teikeigainonstandard = TeikeigaiNonStandard.new(fee: 200, weight: 50)
+teikeigainonstandard100 = TeikeigaiNonStandard.new(fee: 220, weight: 100)
+teikeigainonstandard150 = TeikeigaiNonStandard.new(fee: 300, weight: 150)
+teikeigainonstandard250 = TeikeigaiNonStandard.new(fee: 350, weight: 250)
+teikeigainonstandard500 = TeikeigaiNonStandard.new(fee: 510, weight: 500)
+teikeigainonstandard1000 = TeikeigaiNonStandard.new(fee: 710, weight: 1000)
+teikeigainonstandard2000 = TeikeigaiNonStandard.new(fee: 1040, weight: 2000)
+teikeigainonstandard4000 = TeikeigaiNonStandard.new(fee: 1350, weight: 4000)

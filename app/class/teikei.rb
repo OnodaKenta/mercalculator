@@ -1,10 +1,12 @@
 require "./app/class/common.rb"
 
 class Teikei < Common
-  def initialize(price:, weight:)
+  def initialize(fee:, weight:)
     @name = "定形郵便"
     @url = "/method/teikei"
-    @price = price
+    @fee = fee
+    @box = 0
+    @price = fee + 0
     @type = "日本郵便"
     @anonymous = "×"
     @tracking = "×"
@@ -19,5 +21,5 @@ end
 
 $teikeis = []
 
-$teikei = Teikei.new(price: 84, weight: 25)
-teikei50 = Teikei.new(price: 94, weight: 50)
+$teikei = Teikei.new(fee: 84, weight: 25)
+teikei50 = Teikei.new(fee: 94, weight: 50)
