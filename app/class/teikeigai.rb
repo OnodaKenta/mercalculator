@@ -9,7 +9,6 @@ class TeikeigaiStandard < Common
     @anonymous = "×"
     @tracking = "×"
     @compensation = "×"
-    @note = "筒状のものもOK"
     @lside = 34
     @sside = 25
     @thickness = 3

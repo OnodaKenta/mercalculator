@@ -9,7 +9,6 @@ class Yupack < Common
     @anonymous = "○"
     @tracking = "○"
     @compensation = "○"
-    @note = "-"
     @threesides = threesides
     @weight = 25000
     $yuPacks.push(self)

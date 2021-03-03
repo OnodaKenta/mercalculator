@@ -9,7 +9,6 @@ class Takkyubin < Common
     @anonymous = "○"
     @tracking = "○"
     @compensation = "○"
-    @note = "-"
     @threesides = threesides
     @weight = weight
     $takkyubins.push(self)

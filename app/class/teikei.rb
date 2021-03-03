@@ -9,7 +9,6 @@ class Teikei < Common
     @anonymous = "×"
     @tracking = "×"
     @compensation = "×"
-    @note = "長辺短辺下限あり"
     @lside = 23.5
     @sside = 12
     @thickness = 1

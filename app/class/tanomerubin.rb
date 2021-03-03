@@ -9,7 +9,6 @@ class Tanomerubin < Common
     @anonymous = "○"
     @tracking = "○"
     @compensation = "○"
-    @note = "梱包・集荷・発送をすべてプロにおまかせで大型商品を手間なく出品!"
     @lside = 250
     @weight = 150000
     @threesides = threesides
