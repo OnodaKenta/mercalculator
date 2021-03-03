@@ -6,7 +6,6 @@ class Tanomerubin < Common
     @url = "/method/tanomerubin"
     @fee = fee
     @box = 0
-    @price = fee + 0
     @type = "梱包・発送たのメル便"
     @anonymous = "○"
     @tracking = "○"

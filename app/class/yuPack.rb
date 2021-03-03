@@ -6,7 +6,6 @@ class Yupack < Common
     @url = "/method/yuPack"
     @fee = fee
     @box = 0
-    @price = fee + 0
     @type = "ゆうゆうメルカリ便"
     @anonymous = "○"
     @tracking = "○"

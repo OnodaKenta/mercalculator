@@ -6,7 +6,6 @@ class Takkyubin < Common
     @url = "/method/takkyubin"
     @fee = fee
     @box = 0
-    @price = fee + 0
     @type = "らくらくメルカリ便"
     @anonymous = "○"
     @tracking = "○"

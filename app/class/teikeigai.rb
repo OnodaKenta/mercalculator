@@ -6,7 +6,6 @@ class TeikeigaiStandard < Common
     @url = "/method/teikeigai"
     @fee = fee
     @box = 0
-    @price = fee + 0
     @type = "日本郵便"
     @anonymous = "×"
     @tracking = "×"
@@ -25,7 +24,6 @@ class TeikeigaiNonStandard < Common
     @url = "/method/teikeigai"
     @fee = fee
     @box = 0
-    @price = fee + 0
     @type = "日本郵便"
     @anonymous = 0
     @tracking = 0

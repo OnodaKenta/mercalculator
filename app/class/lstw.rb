@@ -6,7 +6,6 @@ class Lstw < Common
     @url = url
     @fee = fee
     @box = box
-    @price = fee + box
     @type = type
     @anonymous = anonymous
     @tracking = tracking
