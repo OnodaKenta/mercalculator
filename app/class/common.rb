@@ -1,19 +1,6 @@
 class Common
-  attr_accessor :name
-  attr_accessor :titlename
-  attr_accessor :url
-  attr_accessor :fee
-  attr_accessor :box
-  attr_accessor :price
-  attr_accessor :type
-  attr_accessor :anonymous
-  attr_accessor :tracking
-  attr_accessor :compensation
-  attr_accessor :lside
-  attr_accessor :sside
-  attr_accessor :thickness
-  attr_accessor :threesides
-  attr_accessor :weight
+  attr_reader :name, :url, :fee, :box, :price, :type, :anonymous, :tracking, :compensation
+  attr_accessor  :titlename, :lside, :sside, :thickness, :threesides, :weight
 
   def initialize(name:, url:, fee:, box:, type:, anonymous:, tracking:, compensation:)
     @name = name
@@ -25,7 +12,6 @@ class Common
     @anonymous = anonymous
     @tracking = tracking
     @compensation = compensation
-    @note = note
   end
 end
 
