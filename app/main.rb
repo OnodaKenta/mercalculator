@@ -29,6 +29,9 @@ end
 teikeigaistandards = TeikeigaiStandard.classarray
 teikeigai = teikeigaistandards[0]
 
+teikeigainonstandards = TeikeigaiNonStandard.classarray
+teikeigainonstd = teikeigainonstandards[0]
+
 post "/result" do
 
   size = [params[:vertical].to_i, params[:side].to_i, params[:thickness].to_i].sort.reverse
@@ -48,7 +51,7 @@ post "/result" do
   end
 
   if shippingmethods == []
-    $teikeigainonstandards.each do |teikeigainonstandard|
+    teikeigainonstandards.each do |teikeigainonstandard|
       if inputlong <= teikeigainonstandard.lside && inputthree <= teikeigainonstandard.threesides && inputweight <= teikeigainonstandard.weight
         shippingmethods.push(teikeigainonstandard)
         break
@@ -220,10 +223,10 @@ end
 
 get "/method/teikeigai" do
   @method = teikeigai
-  @method2 = $teikeigainonstandard
+  @method2 = teikeigainonstd
   @title = @method.titlename
   @teikeigaistandards = teikeigaistandards
-  @teikeigainonstandards = $teikeigainonstandards
+  @teikeigainonstandards = teikeigainonstandards
   erb :teikeigai
 end
 

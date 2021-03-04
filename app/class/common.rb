@@ -17,8 +17,8 @@ class Common
     @fee + @box
   end
 
-  def pusharray(ar)
-    ar.push(self)
+  def pusharray(parray)
+    parray.push(self)
   end
 
 end

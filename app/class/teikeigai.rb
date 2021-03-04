@@ -21,11 +21,11 @@ class TeikeigaiStandard < Common
   def self.classarray
     @@teikeigaistandards
   end
-
 end
 
 class TeikeigaiNonStandard < Common
-  def initialize(fee:, weight:)
+  @@teikeigainonstandards = []
+  def initialize(fee:, weight:, array: @@teikeigainonstandards)
     @name = "定形外郵便 規格外"
     @url = "/method/teikeigai"
     @fee = fee
@@ -38,7 +38,11 @@ class TeikeigaiNonStandard < Common
     @lside = 60
     @threesides = 90
     @weight = weight
-    $teikeigainonstandards.push(self)
+    pusharray(array)
+  end
+
+  def self.classarray
+    @@teikeigainonstandards
   end
 end
 
@@ -50,9 +54,7 @@ teikeigaistandard250 = TeikeigaiStandard.new(fee: 250, weight: 250)
 teikeigaistandard500 = TeikeigaiStandard.new(fee: 390, weight: 500)
 teikeigaistandard1000 = TeikeigaiStandard.new(fee: 580, weight: 1000)
 
-$teikeigainonstandards = []
-
-$teikeigainonstandard = TeikeigaiNonStandard.new(fee: 200, weight: 50)
+teikeigainonstandard50 = TeikeigaiNonStandard.new(fee: 200, weight: 50)
 teikeigainonstandard100 = TeikeigaiNonStandard.new(fee: 220, weight: 100)
 teikeigainonstandard150 = TeikeigaiNonStandard.new(fee: 300, weight: 150)
 teikeigainonstandard250 = TeikeigaiNonStandard.new(fee: 350, weight: 250)
