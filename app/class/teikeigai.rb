@@ -42,6 +42,14 @@ class TeikeigaiNonStandard < Common
   end
 end
 
+teikeigaistandard50 = TeikeigaiStandard.new(fee: 120, weight: 50)
+teikeigaistandard50.titlename = "定形外郵便"
+teikeigaistandard100 = TeikeigaiStandard.new(fee: 140, weight: 100)
+teikeigaistandard150 = TeikeigaiStandard.new(fee: 210, weight: 150)
+teikeigaistandard250 = TeikeigaiStandard.new(fee: 250, weight: 250)
+teikeigaistandard500 = TeikeigaiStandard.new(fee: 390, weight: 500)
+teikeigaistandard1000 = TeikeigaiStandard.new(fee: 580, weight: 1000)
+
 $teikeigainonstandards = []
 
 $teikeigainonstandard = TeikeigaiNonStandard.new(fee: 200, weight: 50)
