@@ -14,8 +14,13 @@ class Common
   end
 
   def price
-    return @fee + @box
+    @fee + @box
   end
+
+  def pusharray(ar)
+    ar.push(self)
+  end
+
 end
 
 $yuPacket = Common.new(name: "ゆうパケット", url: "/method/yuPacket", fee: 200, box: 0, type: "ゆうゆうメルカリ便", anonymous: "○", tracking: "○", compensation: "○")

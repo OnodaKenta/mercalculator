@@ -32,6 +32,15 @@ get "/" do
   erb :index
 end
 
+teikeigaistandards = []
+teikeigai = TeikeigaiStandard.new(fee: 120, weight: 50, array: teikeigaistandards)
+teikeigai.titlename = "定形外郵便"
+teikeigaistandard100 = TeikeigaiStandard.new(fee: 140, weight: 100, array: teikeigaistandards)
+teikeigaistandard150 = TeikeigaiStandard.new(fee: 210, weight: 150, array: teikeigaistandards)
+teikeigaistandard250 = TeikeigaiStandard.new(fee: 250, weight: 250, array: teikeigaistandards)
+teikeigaistandard500 = TeikeigaiStandard.new(fee: 390, weight: 500, array: teikeigaistandards)
+teikeigaistandard1000 = TeikeigaiStandard.new(fee: 580, weight: 1000, array: teikeigaistandards)
+
 post "/result" do
 
   size = [params[:vertical].to_i, params[:side].to_i, params[:thickness].to_i].sort.reverse
@@ -43,7 +52,7 @@ post "/result" do
 
   shippingmethods = []
 
-  $teikeigaistandards.each do |teikeigaistandard|
+  teikeigaistandards.each do |teikeigaistandard|
     if inputlong <= teikeigaistandard.lside && inputshort <= teikeigaistandard.sside && inputthickness <= teikeigaistandard.thickness && inputweight <= teikeigaistandard.weight
       shippingmethods.push(teikeigaistandard)
       break
@@ -222,10 +231,10 @@ get "/method/teikei" do
 end
 
 get "/method/teikeigai" do
-  @method = $teikeigai
+  @method = teikeigai
   @method2 = $teikeigainonstandard
   @title = @method.titlename
-  @teikeigaistandards = $teikeigaistandards
+  @teikeigaistandards = teikeigaistandards
   @teikeigainonstandards = $teikeigainonstandards
   erb :teikeigai
 end

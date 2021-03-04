@@ -1,7 +1,7 @@
 require "./app/class/common.rb"
 
 class TeikeigaiStandard < Common
-  def initialize(fee:, weight:)
+  def initialize(fee:, weight:, array:)
     @name = "定形外郵便 規格内"
     @url = "/method/teikeigai"
     @fee = fee
@@ -14,7 +14,7 @@ class TeikeigaiStandard < Common
     @sside = 25
     @thickness = 3
     @weight = weight
-    $teikeigaistandards.push(self)
+    pusharray(array)
   end
 end
 
@@ -36,16 +36,7 @@ class TeikeigaiNonStandard < Common
   end
 end
 
-$teikeigaistandards = []
 $teikeigainonstandards = []
-
-$teikeigai = TeikeigaiStandard.new(fee: 120, weight: 50)
-$teikeigai.titlename = "定形外郵便"
-teikeigaistandard100 = TeikeigaiStandard.new(fee: 140, weight: 100)
-teikeigaistandard150 = TeikeigaiStandard.new(fee: 210, weight: 150)
-teikeigaistandard250 = TeikeigaiStandard.new(fee: 250, weight: 250)
-teikeigaistandard500 = TeikeigaiStandard.new(fee: 390, weight: 500)
-teikeigaistandard1000 = TeikeigaiStandard.new(fee: 580, weight: 1000)
 
 $teikeigainonstandard = TeikeigaiNonStandard.new(fee: 200, weight: 50)
 teikeigainonstandard100 = TeikeigaiNonStandard.new(fee: 220, weight: 100)
