@@ -21,6 +21,10 @@ helpers do
   end
 end
 
+def linkBlank(url, txt="梱包材をAmazonで見る")
+  %Q(<a href="#{url}" target="_blank" rel="noopener noreferrer">#{txt}</a>)
+end
+
 get "/" do
   @title = "送料計算"
   erb :index
