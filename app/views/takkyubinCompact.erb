@@ -65,7 +65,7 @@
       </tr>
     </tbody>
   </table>
-  <h2 class="border-start border-4 border-danger ps-2 my-4"><%= $takkyubinCompact.name %></h2>
+  <h2 class="border-start border-4 border-danger ps-2 my-4"><%= @method.name %></h2>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -100,7 +100,8 @@
       </tr>
     </tbody>
   </table>
-  <h2 class="border-start border-4 border-danger ps-2 my-4"><%= $takkyubinCompactThin.name %></h2>
+  <%= linkBlank("https://www.amazon.co.jp/dp/B01688NKOK/ref=cm_sw_r_tw_dp_EFW8KKK20FYSVXZP3PHX?_encoding=UTF8&psc=1") %>
+  <h2 class="border-start border-4 border-danger ps-2 my-4"><%= @method2.name %></h2>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -135,6 +136,7 @@
       </tr>
     </tbody>
   </table>
+  <%= linkBlank("https://www.amazon.co.jp/dp/B018FVHU44/ref=cm_sw_r_tw_dp_KQS5BQEA7TZ14ZQ8Z5G8?_encoding=UTF8&psc=1") %>
   <h2 class="border-start border-4 border-danger ps-2 my-4">備考</h2>
   <ul>
     <li>専用BOXが必要</li>
@@ -145,7 +147,7 @@
   </ul>
   <h2 class="border-start border-4 border-danger ps-2 my-4">参考サイト</h2>
   <div class="d-flex flex-column">
-    <a href="https://www.mercari.com/jp/rakuraku-mercari/" target="_blank" rel="noopener noreferrer">らくらくメルカリ便 - メルカリ スマホでかんたん フリマアプリ</a>
-    <a href="https://www.mercari.com/jp/help_center/article/135/" target="_blank" rel="noopener noreferrer">小〜中型サイズ - 宅急便コンパクト（らくらくメルカリ便） - メルカリ スマホでかんたん フリマアプリ</a>
+    <%= linkBlank("https://www.mercari.com/jp/rakuraku-mercari/", "らくらくメルカリ便 - メルカリ スマホでかんたん フリマアプリ") %>
+    <%= linkBlank("https://www.mercari.com/jp/help_center/article/135/", "小〜中型サイズ - 宅急便コンパクト（らくらくメルカリ便） - メルカリ スマホでかんたん フリマアプリ") %>
   </div>
 </div>

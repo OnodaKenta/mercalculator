@@ -1,24 +1,27 @@
 require "./app/class/common.rb"
 
 class Yupack < Common
-  def initialize(name:, price:, threesides:)
+  @@yuPacks = []
+  def initialize(name:, fee:, threesides:, array: @@yuPacks)
     @name = name
     @url = "/method/yuPack"
-    @price = price
+    @fee = fee
+    @box = 0
     @type = "ゆうゆうメルカリ便"
     @anonymous = "○"
     @tracking = "○"
     @compensation = "○"
-    @note = "-"
     @threesides = threesides
     @weight = 25000
-    $yuPacks.push(self)
+    pusharray(array)
+  end
+
+  def self.classarray
+    @@yuPacks
   end
 end
 
-$yuPacks = []
-
-$yuPack = Yupack.new(name: "ゆうパック60サイズ", price: 700, threesides: 60)
-$yuPack.titlename = "ゆうパック"
-yuPack80 = Yupack.new(name: "ゆうパック80サイズ", price: 800, threesides: 80)
-yuPack100 = Yupack.new(name: "ゆうパック100サイズ", price: 1000, threesides: 100)
+yuPack60 = Yupack.new(name: "ゆうパック60サイズ", fee: 700, threesides: 60)
+yuPack60.titlename = "ゆうパック"
+yuPack80 = Yupack.new(name: "ゆうパック80サイズ", fee: 800, threesides: 80)
+yuPack100 = Yupack.new(name: "ゆうパック100サイズ", fee: 1000, threesides: 100)

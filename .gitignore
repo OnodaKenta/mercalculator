@@ -2,3 +2,5 @@
 /.env
 /app/Dockerfile
 /docker-compose.yml
+/spec/examples.txt
+/.rspec
