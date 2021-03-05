@@ -32,6 +32,33 @@ teikeigai = teikeigaistandards[0]
 teikeigainonstandards = TeikeigaiNonStandard.classarray
 teikeigainonstd = teikeigainonstandards[0]
 
+commons = Common.classarray
+yuPacket = commons[0]
+letterPackPlus = commons[1]
+takkyubinCompact = commons[2]
+takkyubinCompactThin = commons[3]
+nothing = commons[4]
+
+lstws = Lstw.classarray
+nekoPos = lstws[0]
+yuPacketPost = lstws[1]
+clickPost = lstws[2]
+smartLetter = lstws[3]
+letterPackLight = lstws[4]
+yuPacketPlus = lstws[5]
+
+takkyubins = Takkyubin.classarray
+takkyubin = takkyubins[0]
+
+tanomerubins = Tanomerubin.classarray
+tanomerubin = tanomerubins[0]
+
+teikeis = Teikei.classarray
+teikei = teikeis[0]
+
+yuPacks = Yupack.classarray
+yuPack = yuPacks[0]
+
 post "/result" do
 
   size = [params[:vertical].to_i, params[:side].to_i, params[:thickness].to_i].sort.reverse
@@ -59,58 +86,58 @@ post "/result" do
     end  
   end
 
-  $lstws.each do |lstw|
+  if inputlong <= yuPacket.lside && inputthickness <= yuPacket.thickness && inputthree <= yuPacket.threesides && inputweight <= yuPacket.weight
+    shippingmethods.push(yuPacket)
+  end
+
+  if inputlong <= letterPackPlus.lside && inputshort <= letterPackPlus.sside && inputweight <= letterPackPlus.weight
+    shippingmethods.push(letterPackPlus)
+  end
+
+  if inputlong <= takkyubinCompact.lside && inputshort <= takkyubinCompact.sside && inputthickness <= takkyubinCompact.thickness
+    shippingmethods.push(takkyubinCompact)
+  end
+
+  if inputlong <= takkyubinCompactThin.lside && inputshort <= takkyubinCompactThin.sside
+    shippingmethods.push(takkyubinCompactThin)
+  end
+
+  lstws.each do |lstw|
     if inputlong <= lstw.lside && inputshort <= lstw.sside && inputthickness <= lstw.thickness && inputweight <= lstw.weight
       shippingmethods.push(lstw)
     end
   end
 
-  $takkyubins.each do |takkyubin|
-    if inputthree <= takkyubin.threesides && inputweight <= takkyubin.weight
-      shippingmethods.push(takkyubin)
+  takkyubins.each do |takkyu|
+    if inputthree <= takkyu.threesides && inputweight <= takkyu.weight
+      shippingmethods.push(takkyu)
       break
     end
   end
 
-  $yuPacks.each do |yuPack|
-    if inputthree <= yuPack.threesides && inputweight <= yuPack.weight
-      shippingmethods.push(yuPack)
+  tanomerubins.each do |tanomeru|
+    if inputlong <= tanomeru.lside && inputthree <= tanomeru.threesides && inputweight <= tanomeru.weight
+      shippingmethods.push(tanomeru)
       break
     end
   end
 
-  $tanomerubins.each do |tanomerubin|
-    if inputthree <= tanomerubin.threesides
-      shippingmethods.push(tanomerubin)
+  teikeis.each do |tkei|
+    if inputlong <= tkei.lside && inputshort <= tkei.sside && inputthickness <= tkei.thickness && inputweight <= tkei.weight
+      shippingmethods.push(tkei)
       break
     end
   end
 
-  $teikeis.each do |teikei|
-    if inputlong <= teikei.lside && inputshort <= teikei.sside && inputthickness <= teikei.thickness && inputweight <= teikei.weight
-      shippingmethods.push(teikei)
+  yuPacks.each do |ypack|
+    if inputthree <= ypack.threesides && inputweight <= ypack.weight
+      shippingmethods.push(ypack)
       break
     end
-  end
-
-  if inputlong <= $yuPacket.lside && inputthickness <= $yuPacket.thickness && inputthree <= $yuPacket.threesides && inputweight <= $yuPacket.weight
-    shippingmethods.push($yuPacket)
-  end
-
-  if inputlong <= $letterPackPlus.lside && inputshort <= $letterPackPlus.sside && inputweight <= $letterPackPlus.weight
-    shippingmethods.push($letterPackPlus)
-  end
-
-  if inputlong <= $takkyubinCompactThin.lside && inputshort <= $takkyubinCompactThin.sside
-    shippingmethods.push($takkyubinCompactThin)
-  end
-
-  if inputlong <= $takkyubinCompact.lside && inputshort <= $takkyubinCompact.sside && inputthickness <= $takkyubinCompact.thickness
-    shippingmethods.push($takkyubinCompact)
   end
 
   if shippingmethods == []
-    shippingmethods.push($nothing)
+    shippingmethods.push(nothing)
   end
 
   prices = []
@@ -194,30 +221,30 @@ get "/privacy" do
 end
 
 get "/method/takkyubin" do
-  @method = $takkyubin
+  @method = takkyubin
   @title = @method.titlename
-  @takkyubins = $takkyubins
+  @takkyubins = takkyubins
   erb :takkyubin
 end
 
 get "/method/takkyubinCompact" do
-  @method = $takkyubinCompact
-  @method2 = $takkyubinCompactThin
+  @method = takkyubinCompact
+  @method2 = takkyubinCompactThin
   @title = @method.name
   erb :takkyubinCompact
 end
 
 get "/method/tanomerubin" do
-  @method = $tanomerubin
+  @method = tanomerubin
   @title = @method.titlename
-  @tanomerubins = $tanomerubins
+  @tanomerubins = tanomerubins
   erb :tanomerubin
 end
 
 get "/method/teikei" do
-  @method = $teikei
+  @method = teikei
   @title = @method.name
-  @teikeis = $teikeis
+  @teikeis = teikeis
   erb :teikei
 end
 
@@ -231,14 +258,14 @@ get "/method/teikeigai" do
 end
 
 get "/method/yuPack" do
-  @method = $yuPack
+  @method = yuPack
   @title = @method.titlename
-  @yuPacks = $yuPacks
+  @yuPacks = yuPacks
   erb :yuPack
 end
 
 get "/method/:methodname" do |mname|
-  @method = eval("$#{mname}")
+  @method = eval("#{mname}")
   @title = @method.name
   erb mname.to_sym, :layout => :layoutmethod
 end

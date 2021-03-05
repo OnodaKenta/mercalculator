@@ -1,7 +1,8 @@
 require "./app/class/common.rb"
 
 class Tanomerubin < Common
-  def initialize(name:, fee:, threesides:)
+  @@tanomerubins = []
+  def initialize(name:, fee:, threesides:, array: @@tanomerubins)
     @name = name
     @url = "/method/tanomerubin"
     @fee = fee
@@ -11,16 +12,18 @@ class Tanomerubin < Common
     @tracking = "○"
     @compensation = "○"
     @lside = 250
-    @weight = 150000
     @threesides = threesides
-    $tanomerubins.push(self)
+    @weight = 150000
+    pusharray(array)
+  end
+
+  def self.classarray
+    @@tanomerubins
   end
 end
 
-$tanomerubins = []
-
-$tanomerubin = Tanomerubin.new(name: "梱包・発送たのメル便80サイズ", fee: 1700, threesides: 80)
-$tanomerubin.titlename = "梱包・発送たのメル便"
+tanomerubin80 = Tanomerubin.new(name: "梱包・発送たのメル便80サイズ", fee: 1700, threesides: 80)
+tanomerubin80.titlename = "梱包・発送たのメル便"
 tanomerubin120 = Tanomerubin.new(name: "梱包・発送たのメル便120サイズ", fee: 2400, threesides: 120)
 tanomerubin160 = Tanomerubin.new(name: "梱包・発送たのメル便160サイズ", fee: 3400, threesides: 160)
 tanomerubin200 = Tanomerubin.new(name: "梱包・発送たのメル便200サイズ", fee: 5000, threesides: 200)

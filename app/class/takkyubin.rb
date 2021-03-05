@@ -1,7 +1,8 @@
 require "./app/class/common.rb"
 
 class Takkyubin < Common
-  def initialize(name:, fee:, threesides:, weight:)
+  @@takkyubins = []
+  def initialize(name:, fee:, threesides:, weight:, array: @@takkyubins)
     @name = name
     @url = "/method/takkyubin"
     @fee = fee
@@ -12,14 +13,16 @@ class Takkyubin < Common
     @compensation = "○"
     @threesides = threesides
     @weight = weight
-    $takkyubins.push(self)
+    pusharray(array)
+  end
+
+  def self.classarray
+    @@takkyubins
   end
 end
 
-$takkyubins = []
-
-$takkyubin = Takkyubin.new(name: "宅急便60サイズ", fee: 700, threesides: 60, weight: 2000)
-$takkyubin.titlename = "宅急便"
+takkyubin60 = Takkyubin.new(name: "宅急便60サイズ", fee: 700, threesides: 60, weight: 2000)
+takkyubin60.titlename = "宅急便"
 takkyubin80 = Takkyubin.new(name: "宅急便80サイズ", fee: 800, threesides: 80, weight: 5000)
 takkyubin100 = Takkyubin.new(name: "宅急便100サイズ", fee: 1000, threesides: 100, weight: 10000)
 takkyubin120 = Takkyubin.new(name: "宅急便120サイズ", fee: 1100, threesides: 120, weight: 15000)

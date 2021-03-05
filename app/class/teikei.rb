@@ -1,7 +1,8 @@
 require "./app/class/common.rb"
 
 class Teikei < Common
-  def initialize(fee:, weight:)
+  @@teikeis = []
+  def initialize(fee:, weight:, array: @@teikeis)
     @name = "定形郵便"
     @url = "/method/teikei"
     @fee = fee
@@ -14,11 +15,13 @@ class Teikei < Common
     @sside = 12
     @thickness = 1
     @weight = weight
-    $teikeis.push(self)
+    pusharray(array)
+  end
+
+  def self.classarray
+    @@teikeis
   end
 end
 
-$teikeis = []
-
-$teikei = Teikei.new(fee: 84, weight: 25)
+teikei25 = Teikei.new(fee: 84, weight: 25)
 teikei50 = Teikei.new(fee: 94, weight: 50)
