@@ -3,11 +3,11 @@ require_relative "spec_helper.rb"
 RSpec.describe Common do
 
   let!(:commons) {Common.class_variable_set(:@@commons, [])}
-  let!(:yuPacket) {Common.new(name: "ゆうパケット", url: "/method/yuPacket", fee: 200, box: 0, type: "ゆうゆうメルカリ便", anonymous: "○", tracking: "○", compensation: "○")}
-  let!(:letterPackPlus) {Common.new(name: "レターパックプラス", url: "/method/letterPackPlus", fee: 520, box: 0, type: "日本郵便", anonymous: "×", tracking: "○", compensation: "×")}
-  let!(:takkyubinCompact) {Common.new(name: "宅急便コンパクト", url: "/method/takkyubinCompact", fee: 380, box: 70, type: "らくらくメルカリ便", anonymous: "○", tracking: "○", compensation: "○")}
-  let!(:takkyubinCompactThin) {Common.new(name: "宅急便コンパクト薄型BOX", url: "/method/takkyubinCompact", fee: 380, box: 70, type: "らくらくメルカリ便", anonymous: "○", tracking: "○", compensation: "○")}
-  let!(:nothing) {Common.new(name: "なし", url: "none", fee: 0, box: 0, type: "-", anonymous: "×", tracking: "×", compensation: "×")}
+  let(:yuPacket) {Common.new(name: "ゆうパケット", url: "/method/yuPacket", fee: 200, box: 0, type: "ゆうゆうメルカリ便", anonymous: "○", tracking: "○", compensation: "○")}
+  let(:letterPackPlus) {Common.new(name: "レターパックプラス", url: "/method/letterPackPlus", fee: 520, box: 0, type: "日本郵便", anonymous: "×", tracking: "○", compensation: "×")}
+  let(:takkyubinCompact) {Common.new(name: "宅急便コンパクト", url: "/method/takkyubinCompact", fee: 380, box: 70, type: "らくらくメルカリ便", anonymous: "○", tracking: "○", compensation: "○")}
+  let(:takkyubinCompactThin) {Common.new(name: "宅急便コンパクト薄型BOX", url: "/method/takkyubinCompact", fee: 380, box: 70, type: "らくらくメルカリ便", anonymous: "○", tracking: "○", compensation: "○")}
+  let(:nothing) {Common.new(name: "なし", url: "none", fee: 0, box: 0, type: "-", anonymous: "×", tracking: "×", compensation: "×")}
 
   describe "class_variable" do
     context "@@commons" do
@@ -32,7 +32,7 @@ RSpec.describe Common do
 
     context "classarray" do
       it "self.classarrayがcommonsと等しいか" do
-        expect(Common.classarray).to eq commons
+        expect(Common.classarray).to eq [yuPacket, letterPackPlus, takkyubinCompact, takkyubinCompactThin, nothing]
       end
     end
   end
