@@ -31,9 +31,9 @@ class TeikeigaiNonStandard < Common
     @fee = fee
     @box = 0
     @type = "日本郵便"
-    @anonymous = 0
-    @tracking = 0
-    @compensation = 0
+    @anonymous = "×"
+    @tracking = "×"
+    @compensation = "×"
     @note = "筒状のものもOK"
     @lside = 60
     @threesides = 90
