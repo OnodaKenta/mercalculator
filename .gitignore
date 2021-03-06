@@ -4,3 +4,4 @@
 /docker-compose.yml
 /spec/examples.txt
 /.rspec
+/coverage
