@@ -100,4 +100,5 @@ RSpec.configure do |config|
   require 'simplecov'
   SimpleCov.start
   Dir[File.join(File.dirname(__FILE__), "../app/**/*.rb")].each { |f| require f }
+  require "./app/main.rb"
 end
