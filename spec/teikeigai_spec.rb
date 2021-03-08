@@ -8,6 +8,9 @@ RSpec.describe TeikeigaiStandard do
   let(:teikeigaistandard250) {TeikeigaiStandard.new(fee: 250, weight: 250)}
   let(:teikeigaistandard500) {TeikeigaiStandard.new(fee: 390, weight: 500)}
   let(:teikeigaistandard1000) {TeikeigaiStandard.new(fee: 580, weight: 1000)}
+  before do
+    teikeigaistandard50.titlename = "定形外郵便"
+  end
 
   describe "class_variable" do
     context "@@teikeigaistandards" do
@@ -27,9 +30,6 @@ RSpec.describe TeikeigaiStandard do
 
   describe "local_variable" do
     context "teikeigaistandard50" do
-      before do
-        teikeigaistandard50.titlename = "定形外郵便"
-      end
 
       it "teikeigaistandard50のnameが正しい" do
         expect(teikeigaistandard50.name).to eq "定形外郵便 規格内"
