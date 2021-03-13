@@ -1,0 +1,5 @@
+---
+pid: 1325
+control_url: unix:///tmp/puma-status-1615550752661-1325
+control_auth_token: a8411d5bc3f9996e8883dab1eaf4c790
+running_from: "/workspace"

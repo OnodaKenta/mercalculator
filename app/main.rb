@@ -1,9 +1,14 @@
 require "sinatra"
-require "sinatra/reloader"
 require "dotenv"
 require "gmail"
 require "rack/csrf"
-Dir["./app/class/*.rb"].each { |f| require f }
+require "./app/class/common.rb"
+require "./app/class/lstw.rb"
+require "./app/class/takkyubin.rb"
+require "./app/class/tanomerubin.rb"
+require "./app/class/teikei.rb"
+require "./app/class/teikeigai.rb"
+require "./app/class/yuPack.rb"
 
 Dotenv.load("./.env")
 set :bind, "0.0.0.0"
