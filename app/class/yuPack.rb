@@ -20,8 +20,3 @@ class Yupack < Common
     @@yuPacks
   end
 end
-
-yuPack60 = Yupack.new(name: "ゆうパック60サイズ", fee: 700, threesides: 60)
-yuPack60.titlename = "ゆうパック"
-yuPack80 = Yupack.new(name: "ゆうパック80サイズ", fee: 800, threesides: 80)
-yuPack100 = Yupack.new(name: "ゆうパック100サイズ", fee: 1000, threesides: 100)

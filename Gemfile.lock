@@ -56,7 +56,7 @@ PLATFORMS
 DEPENDENCIES
   dotenv
   gmail
-  puma (~> 5.2, >= 5.2.2)
+  puma
   rack_csrf
   rspec
   simplecov

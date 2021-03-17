@@ -23,5 +23,3 @@ class Teikei < Common
   end
 end
 
-teikei25 = Teikei.new(fee: 84, weight: 25)
-teikei50 = Teikei.new(fee: 94, weight: 50)

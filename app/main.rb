@@ -35,38 +35,87 @@ get "/" do
   erb :index
 end
 
+yuPacket = Common.new(name: "ゆうパケット", url: "/method/yuPacket", fee: 200, box: 0, type: "ゆうゆうメルカリ便", anonymous: "○", tracking: "○", compensation: "○")
+yuPacket.lside = 34
+yuPacket.thickness = 3
+yuPacket.threesides = 60
+yuPacket.weight = 1000
+
+letterPackPlus = Common.new(name: "レターパックプラス", url: "/method/letterPackPlus", fee: 520, box: 0, type: "日本郵便", anonymous: "×", tracking: "○", compensation: "×")
+letterPackPlus.lside = 34
+letterPackPlus.sside = 24.8
+letterPackPlus.weight = 4000
+
+takkyubinCompact = Common.new(name: "宅急便コンパクト", url: "/method/takkyubinCompact", fee: 380, box: 70, type: "らくらくメルカリ便", anonymous: "○", tracking: "○", compensation: "○")
+takkyubinCompact.lside = 25
+takkyubinCompact.sside = 20
+takkyubinCompact.thickness = 5
+
+takkyubinCompactThin = Common.new(name: "宅急便コンパクト薄型BOX", url: "/method/takkyubinCompact", fee: 380, box: 70, type: "らくらくメルカリ便", anonymous: "○", tracking: "○", compensation: "○")
+takkyubinCompactThin.lside = 34
+takkyubinCompactThin.sside = 24.8
+
+nothing = Common.new(name: "なし", url: "none", fee: 0, box: 0, type: "-", anonymous: "×", tracking: "×", compensation: "×")
+
+nekoPos = Lstw.new(name: "ネコポス", url: "/method/nekoPos", fee: 175, box: 0, type: "らくらくメルカリ便", anonymous: "○", tracking: "○", compensation: "○", lside: 31.2, sside: 22.8, thickness: 3, weight: 1000)
+yuPacketPost = Lstw.new(name: "ゆうパケットポスト", url: "/method/yuPacketPost", fee: 200, box: 65, type: "ゆうゆうメルカリ便", anonymous: "○", tracking: "○", compensation: "○", lside: 32.7, sside: 22.8, thickness: 3, weight: 2000)
+clickPost = Lstw.new(name: "クリックポスト", url: "/method/clickPost", fee: 198, box: 0, type: "日本郵便", anonymous: "×", tracking: "○", compensation: "×", lside: 34, sside: 25, thickness: 3, weight: 1000)
+smartLetter = Lstw.new(name: "スマートレター", url: "/method/smartLetter", fee: 180, box: 0, type: "日本郵便", anonymous: "×", tracking: "×", compensation: "×", lside: 25, sside: 17, thickness: 2, weight: 1000)
+letterPackLight = Lstw.new(name: "レターパックライト", url: "/method/letterPackLight", fee: 370, box: 0, type: "日本郵便", anonymous: "×", tracking: "○", compensation: "×", lside: 34, sside: 24.8, thickness: 3, weight: 4000)
+yuPacketPlus = Lstw.new(name: "ゆうパケットプラス", url: "/method/yuPacketPlus", fee: 375, box: 65, type: "ゆうゆうメルカリ便", anonymous: "○", tracking: "○", compensation: "○", lside: 24, sside: 17, thickness: 7, weight: 2000)
+
+takkyubin = Takkyubin.new(name: "宅急便60サイズ", fee: 700, threesides: 60, weight: 2000)
+takkyubin.titlename = "宅急便"
+takkyubin80 = Takkyubin.new(name: "宅急便80サイズ", fee: 800, threesides: 80, weight: 5000)
+takkyubin100 = Takkyubin.new(name: "宅急便100サイズ", fee: 1000, threesides: 100, weight: 10000)
+takkyubin120 = Takkyubin.new(name: "宅急便120サイズ", fee: 1100, threesides: 120, weight: 15000)
+takkyubin140 = Takkyubin.new(name: "宅急便140サイズ", fee: 1300, threesides: 140, weight: 20000)
+takkyubin160 = Takkyubin.new(name: "宅急便160サイズ", fee: 1600, threesides: 160, weight: 25000)
+
+tanomerubin = Tanomerubin.new(name: "梱包・発送たのメル便80サイズ", fee: 1700, threesides: 80)
+tanomerubin.titlename = "梱包・発送たのメル便"
+tanomerubin120 = Tanomerubin.new(name: "梱包・発送たのメル便120サイズ", fee: 2400, threesides: 120)
+tanomerubin160 = Tanomerubin.new(name: "梱包・発送たのメル便160サイズ", fee: 3400, threesides: 160)
+tanomerubin200 = Tanomerubin.new(name: "梱包・発送たのメル便200サイズ", fee: 5000, threesides: 200)
+tanomerubin250 = Tanomerubin.new(name: "梱包・発送たのメル便250サイズ", fee: 8600, threesides: 250)
+tanomerubin300 = Tanomerubin.new(name: "梱包・発送たのメル便300サイズ", fee: 12000, threesides: 300)
+tanomerubin350 = Tanomerubin.new(name: "梱包・発送たのメル便350サイズ", fee: 18500, threesides: 350)
+tanomerubin400 = Tanomerubin.new(name: "梱包・発送たのメル便400サイズ", fee: 25400, threesides: 400)
+tanomerubin450 = Tanomerubin.new(name: "梱包・発送たのメル便450サイズ", fee: 33000, threesides: 450)
+
+teikei = Teikei.new(fee: 84, weight: 25)
+teikei50 = Teikei.new(fee: 94, weight: 50)
+
+teikeigaistandard = TeikeigaiStandard.new(fee: 120, weight: 50)
+teikeigaistandard.titlename = "定形外郵便"
+teikeigaistandard100 = TeikeigaiStandard.new(fee: 140, weight: 100)
+teikeigaistandard150 = TeikeigaiStandard.new(fee: 210, weight: 150)
+teikeigaistandard250 = TeikeigaiStandard.new(fee: 250, weight: 250)
+teikeigaistandard500 = TeikeigaiStandard.new(fee: 390, weight: 500)
+teikeigaistandard1000 = TeikeigaiStandard.new(fee: 580, weight: 1000)
+
+teikeigainonstandard = TeikeigaiNonStandard.new(fee: 200, weight: 50)
+teikeigainonstandard100 = TeikeigaiNonStandard.new(fee: 220, weight: 100)
+teikeigainonstandard150 = TeikeigaiNonStandard.new(fee: 300, weight: 150)
+teikeigainonstandard250 = TeikeigaiNonStandard.new(fee: 350, weight: 250)
+teikeigainonstandard500 = TeikeigaiNonStandard.new(fee: 510, weight: 500)
+teikeigainonstandard1000 = TeikeigaiNonStandard.new(fee: 710, weight: 1000)
+teikeigainonstandard2000 = TeikeigaiNonStandard.new(fee: 1040, weight: 2000)
+teikeigainonstandard4000 = TeikeigaiNonStandard.new(fee: 1350, weight: 4000)
+
+yuPack = Yupack.new(name: "ゆうパック60サイズ", fee: 700, threesides: 60)
+yuPack.titlename = "ゆうパック"
+yuPack80 = Yupack.new(name: "ゆうパック80サイズ", fee: 800, threesides: 80)
+yuPack100 = Yupack.new(name: "ゆうパック100サイズ", fee: 1000, threesides: 100)
+
 teikeigaistandards = TeikeigaiStandard.classarray
-teikeigai = teikeigaistandards[0]
-
 teikeigainonstandards = TeikeigaiNonStandard.classarray
-teikeigainonstd = teikeigainonstandards[0]
-
 commons = Common.classarray
-yuPacket = commons[0]
-letterPackPlus = commons[1]
-takkyubinCompact = commons[2]
-takkyubinCompactThin = commons[3]
-nothing = commons[4]
-
 lstws = Lstw.classarray
-nekoPos = lstws[0]
-yuPacketPost = lstws[1]
-clickPost = lstws[2]
-smartLetter = lstws[3]
-letterPackLight = lstws[4]
-yuPacketPlus = lstws[5]
-
 takkyubins = Takkyubin.classarray
-takkyubin = takkyubins[0]
-
 tanomerubins = Tanomerubin.classarray
-tanomerubin = tanomerubins[0]
-
 teikeis = Teikei.classarray
-teikei = teikeis[0]
-
 yuPacks = Yupack.classarray
-yuPack = yuPacks[0]
 
 post "/result" do
 
@@ -258,8 +307,8 @@ get "/method/teikei" do
 end
 
 get "/method/teikeigai" do
-  @method = teikeigai
-  @method2 = teikeigainonstd
+  @method = teikeigaistandard
+  @method2 = teikeigainonstandard
   @title = @method.titlename
   @teikeigaistandards = teikeigaistandards
   @teikeigainonstandards = teikeigainonstandards

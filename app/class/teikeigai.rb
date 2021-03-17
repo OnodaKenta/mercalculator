@@ -45,20 +45,3 @@ class TeikeigaiNonStandard < Common
     @@teikeigainonstandards
   end
 end
-
-teikeigaistandard50 = TeikeigaiStandard.new(fee: 120, weight: 50)
-teikeigaistandard50.titlename = "定形外郵便"
-teikeigaistandard100 = TeikeigaiStandard.new(fee: 140, weight: 100)
-teikeigaistandard150 = TeikeigaiStandard.new(fee: 210, weight: 150)
-teikeigaistandard250 = TeikeigaiStandard.new(fee: 250, weight: 250)
-teikeigaistandard500 = TeikeigaiStandard.new(fee: 390, weight: 500)
-teikeigaistandard1000 = TeikeigaiStandard.new(fee: 580, weight: 1000)
-
-teikeigainonstandard50 = TeikeigaiNonStandard.new(fee: 200, weight: 50)
-teikeigainonstandard100 = TeikeigaiNonStandard.new(fee: 220, weight: 100)
-teikeigainonstandard150 = TeikeigaiNonStandard.new(fee: 300, weight: 150)
-teikeigainonstandard250 = TeikeigaiNonStandard.new(fee: 350, weight: 250)
-teikeigainonstandard500 = TeikeigaiNonStandard.new(fee: 510, weight: 500)
-teikeigainonstandard1000 = TeikeigaiNonStandard.new(fee: 710, weight: 1000)
-teikeigainonstandard2000 = TeikeigaiNonStandard.new(fee: 1040, weight: 2000)
-teikeigainonstandard4000 = TeikeigaiNonStandard.new(fee: 1350, weight: 4000)

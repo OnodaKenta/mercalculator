@@ -6,7 +6,7 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 # gem "rails"
 gem "sinatra"
-gem 'puma', '~> 5.2', '>= 5.2.2'
+gem "puma"
 gem "gmail"
 gem "dotenv"
 gem "rack_csrf"
